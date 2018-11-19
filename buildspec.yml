@@ -1,0 +1,13 @@
+
+version: 0.2
+phases:
+  install:
+    commands:
+      - npm install time
+      - aws cloudformation package --template-file Template.yaml --kms-key-id arn:aws:kms:us-east-2:843663129568:key/2c69c1f6-1112-4480-9811-fd6e128af53c --s3-bucket charactercreator 
+                                   --output-template-file outputTemplate.yaml
+artifacts:
+  type: zip
+  files:
+    - Template.yaml
+    - outputTemplate.yaml
