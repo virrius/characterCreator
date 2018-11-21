@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+-    <meta charset="UTF-8">
+    <title>Creation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../scripts/charact.js"></script>
+
+</head>
+<body>
+    <form id="Characteristics" name ="CharForm">
+        <div id="points"></div>
+        <b><p>Выберите ваши характеристики</p></b>
+        <h1>str</h1>
+        <input type="radio" onchange="changed()" name="str" value="0" checked> d4
+        <input type="radio" onchange="changed()" name="str" value="1" > d6
+        <input type="radio" onchange="changed()" name="str" value="2"> d8
+        <input type="radio" onchange="changed()" name="str" value="3" > d10
+        <input type="radio" onchange="changed()" name="str" value="4" > d12
+        <h1>dex</h1>
+        <input type="radio" onchange="changed()" name="dex" value="0" checked> d4
+        <input type="radio" onchange="changed()" name="dex" value="1" > d6
+        <input type="radio" onchange="changed()" name="dex" value="2"> d8
+        <input type="radio" onchange="changed()" name="dex" value="3" > d10
+        <input type="radio" onchange="changed()" name="dex" value="4" > d12
+        <h1>smt</h1>
+        <input type="radio" onchange="changed()" name="smt" value="0" checked> d4
+        <input type="radio" onchange="changed()" name="smt" value="1" > d6
+        <input type="radio" onchange="changed()" name="smt" value="2"> d8
+        <input type="radio" onchange="changed()" name="smt" value="3" > d10
+        <input type="radio" onchange="changed()" name="smt" value="4" > d12
+        <div id="error"></div>
+    <p><input type="submit" onchange="changed()" value="Выбрать"></p>
+        <button id="testLambdaBtn" onclick="showTime()">TEST</button>
+    </form>
+<div id="time"></div>
+</body>
+</html>
+
