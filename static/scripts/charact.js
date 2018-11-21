@@ -18,13 +18,16 @@ function changed()
 function  showTime() {
 
         $.ajax({
-            url: " https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/TimeResource",
+            url: " https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Stage/TimeResource",
             type: 'get',
-            headers: {
-                "content-type": "application/json"
-            },
+            dataType: "text",
             success:function (result){
-                document.getElementById("time").innerText=result;
+                console.log("Success: " + result);
+                document.getElementById("time").innerText=result
+            },
+            error:function (error) {
+                console.log("Fail: " + JSON.stringify(error));
+                console.log("Fail: " + error);
             }
         });
 
