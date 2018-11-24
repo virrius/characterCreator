@@ -28,4 +28,4 @@ artifacts:
     - Template.yaml
     - aws-serverless-cfn-template.yaml
     - aws-serverless-cfn-parameter.json
-    discard-paths: yes
+  discard-paths: yes
