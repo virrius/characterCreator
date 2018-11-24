@@ -13,7 +13,7 @@ phases:
       - sh $HOME_DIR/scripts/node-lambdas.sh package
         - cd $HOME_DIR/scripts/cloudformation/
       - aws cloudformation package --debug --template-file Template.yaml  --s3-bucket charactercreator
-        --output-template-file aws-serverless-cfn-template.yaml
+        --output-template-file aws-serverless-template.yaml
 
 
 
@@ -23,8 +23,8 @@ cache:
     - '/root/.npm/**/*'
     - '/usr/lib/node_modules/**/*'
 artifacts:
-  types: zip
+  type: zip
   files:
-    - scripts/cloudformation/aws-serverless-cfn-template.yaml
+    - scripts/cloudformation/aws-serverless-template.yaml
     - scripts/cloudformation/aws-serverless-parameter.json
-  discard-paths: yes
+
