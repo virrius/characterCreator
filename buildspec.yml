@@ -22,5 +22,5 @@ cache:
 artifacts:
   types: zip
   files:
-    - scripts/cloudformation/outputTemplate.yaml
+    - outputTemplate.yaml
     - scripts/cloudformation/aws-serverless-parameter.json
