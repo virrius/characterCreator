@@ -6,6 +6,9 @@ phases:
       - export HOME_DIR=$CODEBUILD_SRC_DIR
       - npm set progress=false
       - sh $HOME_DIR/scripts/node-lambdas.sh build
+      - cd $HOME_DIR/scripts/cloudformation/
+      - aws cloudformation package --template-file Template.yaml --s3-bucket charactercreator --output-template-file outputTemplate.yaml
+
 
   build:
     commands:
@@ -13,8 +16,6 @@ phases:
       - sh $HOME_DIR/scripts/node-lambdas.sh package
   post_build:
     commands:
-    - cd ../scripts/cloudformation/
-    - aws cloudformation package --template-file Template.yaml --s3-bucket charactercreator --output-template-file aws-serverless-template.yaml
 
 
 cache:
@@ -24,6 +25,7 @@ cache:
 artifacts:
   types: zip
   files:
-    - scripts/cloudformation/aws-serverless-template.yaml
+    - outputTemplate.yaml
+    - scripts/cloudformation/outputTemplate.yaml
     - scripts/cloudformation/aws-serverless-parameter.json
 
