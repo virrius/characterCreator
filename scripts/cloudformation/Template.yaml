@@ -1,10 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Template for deploying all lambdas
-Parameters: 
-    LambdaRoleArn:
-    Type: String
-    Description: Lambda role ARN to be used for all lambdas
 Resources:
   getFunction:
     Type: AWS::Serverless::Function
