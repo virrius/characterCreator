@@ -12,7 +12,6 @@ Resources:
       Handler: index.handler
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/getFunction/getFunction.zip
-	  Role: !Ref LambdaRoleArn
 	  FunctionName: getFunction
       Timeout: 120
       MemorySize: 128
@@ -28,7 +27,6 @@ Resources:
       Handler: index.handler
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/timeFunction/timeFunction.zip
-      Role: !Ref LambdaRoleArn
       FunctionName: timeFunction
       Timeout: 120
       MemorySize: 128
