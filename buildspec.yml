@@ -6,7 +6,7 @@ phases:
       - export HOME_DIR=$CODEBUILD_SRC_DIR
       - npm set progress=false
       - sh $HOME_DIR/scripts/node-lambdas.sh build
-      - aws cloudformation package --template-file Template.yaml  --s3-bucket charactercreator
+      - aws cloudformation package --debug --template-file Template.yaml  --s3-bucket charactercreator
         --output-template-file outputTemplate.yaml
   build:
     commands:
