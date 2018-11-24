@@ -11,11 +11,10 @@ phases:
     commands:
       - echo Packaging started on `date`
       - sh $HOME_DIR/scripts/node-lambdas.sh package
-        - cd $HOME_DIR/scripts/cloudformation/
-      - aws cloudformation package  --template-file Template.yaml  --s3-bucket charactercreator
-        --output-template-file aws-serverless-template.yaml
-
-
+  post_build:
+    commands:
+    - cd ../scripts/cloudformation/
+    - aws cloudformation package --template-file Template.yaml --s3-bucket charactercreator --output-template-file aws-serverless-template.yaml
 
 
 cache:
@@ -23,7 +22,7 @@ cache:
     - '/root/.npm/**/*'
     - '/usr/lib/node_modules/**/*'
 artifacts:
-  type: zip
+  types: zip
   files:
     - scripts/cloudformation/aws-serverless-template.yaml
     - scripts/cloudformation/aws-serverless-parameter.json
