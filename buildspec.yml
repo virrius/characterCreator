@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - cd $HOME_DIR/scripts/cloudformation/
-      - aws cloudformation package --debug --template-file Template.yaml --s3-bucket charactercreator --output-template-file aws-serverless-cfn-template.yaml
+      - aws cloudformation package --debug --template-file Template.yaml --s3-bucket charactercreator --output-template-file outputTemplate.yaml
 cache:
   paths:
     - '/root/.npm/**/*'
@@ -22,5 +22,5 @@ cache:
 artifacts:
   types: zip
   files:
-    - scripts/cloudformation/aws-serverless-cfn-template.yaml
+    - scripts/cloudformation/outputTemplate.yaml
     - scripts/cloudformation/aws-serverless-parameter.json
