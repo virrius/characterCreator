@@ -25,7 +25,6 @@ cache:
 artifacts:
   types: zip
   files:
-    - Template.yaml
-    - aws-serverless-cfn-template.yaml
-    - aws-serverless-cfn-parameter.json
+    - scripts/cloudformation/aws-serverless-cfn-template.yaml
+    - scripts/cloudformation/aws-serverless-parameter.json
   discard-paths: yes
