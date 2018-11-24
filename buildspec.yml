@@ -26,5 +26,6 @@ artifacts:
   types: zip
   files:
     - Template.yaml
-    - $HOME_DIR/scripts/cloudformation/aws-serverless-cfn-template.yaml
-    - $HOME_DIR/scripts/cloudformation/aws-serverless-cfn-parameter.json
+    - aws-serverless-cfn-template.yaml
+    - aws-serverless-cfn-parameter.json
+    discard-paths: yes
