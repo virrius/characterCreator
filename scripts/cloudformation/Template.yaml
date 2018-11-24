@@ -12,9 +12,7 @@ Resources:
       Handler: index.handler
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/getFunction/getFunction.zip
-      Timeout: 120
-      MemorySize: 128
-        Events:
+      Events:
         GetFuncApi:
           Type: Api
           Properties:
@@ -26,8 +24,6 @@ Resources:
       Handler: index.handler
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/timeFunction/timeFunction.zip
-      Timeout: 120
-      MemorySize: 128
       Events:
         MyTimeApi:
           Type: Api
