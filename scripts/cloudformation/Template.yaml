@@ -12,7 +12,6 @@ Resources:
       Handler: index.handler
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/getFunction/getFunction.zip
-	  FunctionName: getFunction
       Timeout: 120
       MemorySize: 128
         Events:
@@ -27,7 +26,6 @@ Resources:
       Handler: index.handler
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/timeFunction/timeFunction.zip
-      FunctionName: timeFunction
       Timeout: 120
       MemorySize: 128
       Events:
