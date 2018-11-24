@@ -11,12 +11,12 @@ phases:
     commands:
       - echo Packaging started on `date`
       - sh $HOME_DIR/scripts/node-lambdas.sh package
-  post_build:
-    commands:
-      - echo Build completed on `date`
-      - cd $HOME_DIR/scripts/cloudformation/
+        - cd $HOME_DIR/scripts/cloudformation/
       - aws cloudformation package --debug --template-file Template.yaml  --s3-bucket charactercreator
         --output-template-file aws-serverless-cfn-template.yaml
+
+
+
 
 cache:
   paths:
