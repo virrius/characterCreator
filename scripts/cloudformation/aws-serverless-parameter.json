@@ -1,0 +1,5 @@
+{
+  "Parameters": {
+    "LambdaRoleArn": "arn:aws:iam::843663129568:role/cloudformation-lambda-execution-role"
+     }
+}

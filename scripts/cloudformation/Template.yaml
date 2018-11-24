@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Template for deploying all lambdas
+Parameters: 
+    LambdaRoleArn:
+    Type: String
+    Description: Lambda role ARN to be used for all lambdas
+Resources:
+  getFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/getFunction/getFunction.zip
+      Events:
+	Role: !Ref LambdaRoleArn
+	FunctionName: getFunction
+      Timeout: 120
+      MemorySize: 128
+        MyTimeApi:
+          Type: Api
+          Properties:
+            Path: /getFunction
+            Method: GET
+  timeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/timeFunction/timeFunction.zip
+      Events:
+        MyTimeApi:
+          Type: Api
+          Properties:
+            Path: /TimeResource
+            Method: GET
