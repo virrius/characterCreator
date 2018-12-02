@@ -1,0 +1,24 @@
+.col-6 {
+    border: 2px solid black;
+    min-height: 100px;
+}
+
+.col-left {
+    margin-right: auto;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.15s ease-in-out;
+    border-radius: 4px;
+    padding: 0.25rem 1rem;
+}
+
+.flex-align-center:hover {
+    background-color: #cccccc;
+}
