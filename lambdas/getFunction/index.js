@@ -20,20 +20,21 @@ exports.handler = function(event, context,callback) {
 
 
 
-            client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');");
-            
+            client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');",
+                function() {
 
-            client.end( function(err) {
+                    client.end(function (err) {
 
 
-                callback(null, {
-                    statusCode: '200',
-                    "headers": {
-                        "Access-Control-Allow-Origin": "*"
-                    },
-                    body: "AAAAAAAAA"
+                        callback(null, {
+                            statusCode: '200',
+                            "headers": {
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            body: "AAAAAAAAA"
+                        });
+                    });
                 });
-            });
             console.log("after callback");
         }
     });
