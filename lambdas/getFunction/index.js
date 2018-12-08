@@ -10,7 +10,7 @@ exports.handler = function(event, context) {
         database: 'characterdb'
     });
     let pool = new pg.Pool(conn);
-    pool.connect(function(err, client, done) {
+    pool.connect(function (err, client, done) {
 
         if (err) {
             console.error('Error connecting to pg server' + err.stack);
@@ -19,12 +19,14 @@ exports.handler = function(event, context) {
             console.log('Connection established with pg db server');
 
             client.query("INSERT INTO users(Name,Email,Password) VALUES('virrius', 'virrius@ro.ru', 'qwerty')");
-                if (err) {
-                    console.error('Error executing query on pg db' + err.stack);
-                    callback(err);
-                }
-                client.release();
-                pool.end();
-                console.log('Ending lambda at ' + new Date());
+            if (err) {
+                console.error('Error executing query on pg db' + err.stack);
+                callback(err);
+            }
+        }
+        client.release();
+        pool.end();
+        console.log('Ending lambda at ' + new Date());
 
-            });
+    });
+}
