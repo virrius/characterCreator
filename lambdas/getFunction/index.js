@@ -10,8 +10,9 @@ exports.handler = function(event, context) {
         database: 'characterdb'
     });
     var client = new pg.Client(conn);
-    client.connect(err);
-    
+    let err=false;
+    client.connect();
+
     if (err) {
         console.error('Error connecting to pg server' + err.stack);
         callback(err);
@@ -20,6 +21,13 @@ exports.handler = function(event, context) {
 
         client.query("INSERT INTO users(id,name,email,password) VALUES('1','virrius','vir@ro.ru','qwerty');");
         context.succeed("yep");
+        callback(null, {
+            statusCode: '200',
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            body:"AAAAAAAAA"
+        });
     }
 
     console.log('Ending lambda at ' + new Date());
