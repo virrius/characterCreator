@@ -11,24 +11,24 @@ exports.handler = function(event, context,callback) {
     });
     var client = new pg.Client(conn);
     let err=false;
-    client.connect();
+    client.connect((err) => {
+        if (err) {
+            console.error('Error connecting to pg server' + err.stack);
+            callback(err);
+        } else {
+            console.log('Connection established with pg db server');
 
-    if (err) {
-        console.error('Error connecting to pg server' + err.stack);
-        callback(err);
-    } else {
-        console.log('Connection established with pg db server');
-
-        client.query("INSERT INTO users(id,name,email,password) VALUES('1','virrius','vir@ro.ru','qwerty');");
-        context.succeed("yep");
-        callback(null, {
-            statusCode: '200',
-            "headers": {
-                "Access-Control-Allow-Origin": "*"
-            },
-            body:"AAAAAAAAA"
-        });
-    }
+            client.query("INSERT INTO users(id,name,email,password) VALUES('1','virrius','vir@ro.ru','qwerty');");
+            context.succeed("yep");
+            callback(null, {
+                statusCode: '200',
+                "headers": {
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: "AAAAAAAAA"
+            });
+        }
+    });
 
     console.log('Ending lambda at ' + new Date());
 
