@@ -19,12 +19,13 @@ function Registration() {
         data: JSON.stringify({
             'name': name,
             'email': email,
-            'password':password
+            'password': password
         }),
-        success: function(res){
+        success: function (res) {
             console.log('done.  ' + res);
         },
-        error: function(){
+        error: function () {
             console.log('Error.');
         }
     });
+}

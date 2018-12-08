@@ -26,7 +26,13 @@ exports.handler = function(event, context) {
         }
         client.release();
         pool.end();
+        callback(null, {
+            statusCode: '200',
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
+        };
         console.log('Ending lambda at ' + new Date());
 
     });
-}
+};
