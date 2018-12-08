@@ -7,7 +7,7 @@ exports.handler = function(event, context,callback) {
         port: 5432,
         user: 'virrius',
         password: 'yaalz2027',
-        database: 'characterdb'
+        database: 'characterDB'
     });
     var client = new pg.Client(conn);
     let err=false;
