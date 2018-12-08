@@ -1,6 +1,6 @@
 console.log('PostgreSQL GET Function');
 var pg = require("pg");
-exports.handler = function(event, context) {
+exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
     let conn = ({
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
