@@ -1,6 +1,6 @@
 console.log('PostgreSQL GET Function');
 var pg = require("pg");
-exports.handler = function(event, context,callback) {
+exports.exports.handler= (event, context,callback) =>{
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
     let conn = ({
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
@@ -18,8 +18,7 @@ exports.handler = function(event, context,callback) {
         } else {
             console.log('Connection established with pg db server');
 
-            client.query("INSERT INTO users(name,email,password) VALUES('virrius','vir@ro.ru','qwerty');");
-            context.succeed("yep");
+            client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');");
             callback(null, {
                 statusCode: '200',
                 "headers": {
