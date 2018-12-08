@@ -7,7 +7,7 @@ exports.handler = function(event, context) {
         port: 5432,
         user: 'virrius',
         password: 'yaalz2027',
-        database: 'characterdb'
+        database: 'characterDB'
     });
     let pool = new pg.Pool(conn);
     pool.connect(function (err, client, done) {
