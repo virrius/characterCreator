@@ -18,7 +18,10 @@ exports.handler = function(event, context,callback) {
         } else {
             console.log('Connection established with pg db server');
 
+
+
             client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');");
+            context.succeed("callback?");
             callback(null, {
                 statusCode: '200',
                 "headers": {
@@ -26,6 +29,7 @@ exports.handler = function(event, context,callback) {
                 },
                 body: "AAAAAAAAA"
             });
+            console.log("after callback");
         }
     });
 
