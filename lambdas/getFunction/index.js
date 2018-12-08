@@ -21,13 +21,18 @@ exports.handler = function(event, context,callback) {
 
 
             client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');");
-            context.succeed("callback?");
-            callback(null, {
-                statusCode: '200',
-                "headers": {
-                    "Access-Control-Allow-Origin": "*"
-                },
-                body: "AAAAAAAAA"
+            
+
+            client.end( function(err) {
+
+
+                callback(null, {
+                    statusCode: '200',
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    body: "AAAAAAAAA"
+                });
             });
             console.log("after callback");
         }
