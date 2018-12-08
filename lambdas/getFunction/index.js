@@ -7,10 +7,10 @@ exports.handler = function(event, context) {
         port: 5432,
         user: 'virrius',
         password: 'yaalz2027',
-        database: 'characterDB'
+        database: 'characterdb'
     });
-    let pool = new pg.Pool(conn);
-    pool.connect(function (err, client, done) {
+    var client = new pg.Client(conn);
+    client.connect(function (err, client, done) {
 
         if (err) {
             console.error('Error connecting to pg server' + err.stack);
@@ -24,8 +24,7 @@ exports.handler = function(event, context) {
                 callback(err);
             }
         }
-        client.release();
-        pool.end();
+        context.succeed("yep");
         callback(null, {
             statusCode: '200',
             "headers": {
