@@ -10,17 +10,16 @@ exports.handler = function(event, context) {
         database: 'characterdb'
     });
     var client = new pg.Client(conn);
-    client.connect();
-    context.succeed("yep");
-    let err=false;
+    client.connect(err);
+    
     if (err) {
         console.error('Error connecting to pg server' + err.stack);
         callback(err);
     } else {
         console.log('Connection established with pg db server');
 
-        client.query("INSERT INTO \"Users\" (\"ID\",\"Name\",\"Email\",\"Password\") VALUES('1','virrius', 'virrius@ro.ru', 'qwerty');");
-
+        client.query("INSERT INTO users(id,name,email,password) VALUES('1','virrius','vir@ro.ru','qwerty');");
+        context.succeed("yep");
     }
 
     console.log('Ending lambda at ' + new Date());
