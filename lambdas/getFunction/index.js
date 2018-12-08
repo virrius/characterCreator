@@ -10,28 +10,28 @@ exports.handler = function(event, context) {
         database: 'characterdb'
     });
     var client = new pg.Client(conn);
-    client.connect(function (err, client, done) {
+    client.connect();
+    context.succeed("yep");
+    if (err) {
+        console.error('Error connecting to pg server' + err.stack);
+        callback(err);
+    } else {
+        console.log('Connection established with pg db server');
 
+        client.query("INSERT INTO users(Name,Email,Password) VALUES('virrius', 'virrius@ro.ru', 'qwerty')");
         if (err) {
-            console.error('Error connecting to pg server' + err.stack);
+            console.error('Error executing query on pg db' + err.stack);
             callback(err);
-        } else {
-            console.log('Connection established with pg db server');
-
-            client.query("INSERT INTO users(Name,Email,Password) VALUES('virrius', 'virrius@ro.ru', 'qwerty')");
-            if (err) {
-                console.error('Error executing query on pg db' + err.stack);
-                callback(err);
-            }
         }
-        context.succeed("yep");
-        callback(null, {
-            statusCode: '200',
-            "headers": {
-                "Access-Control-Allow-Origin": "*"
-            }
-        });
-        console.log('Ending lambda at ' + new Date());
+    }
 
+    callback(null, {
+        statusCode: '200',
+        "headers": {
+            "Access-Control-Allow-Origin": "*"
+        }
     });
+    console.log('Ending lambda at ' + new Date());
+
+
 };
