@@ -17,6 +17,10 @@ $(document).ready(function($) {
             let val=parseInt($(":radio[name="+characteristics[i]+"]").filter(":checked").val());
             sum =sum+val;
             characteristicValues[i]=val;
+            if(i===characteristics.indexOf("vigor")){
+               document.getElementById("toughness").innerText=4+val;
+            }
+
         }
         console.log("sum of characteristics = "+sum);
         if(sum > maxCharsPoints)
@@ -34,12 +38,14 @@ $(document).ready(function($) {
             Array.from($(skill).find(':input:checked')).forEach(function (it)
             {
                 let diff=parseInt(it.value)-1-characteristicValues[characteristics.indexOf(item)];
-                sum+=parseInt(it.value)+(diff>0?diff:0)
-
+                sum+=parseInt(it.value)+(diff>0?diff:0);
+                document.getElementById(it.name).innerText=setDice(parseInt(it.value))
+                if(it.name==="fighting") {
+                    document.getElementById("parry").innerText =2+ (parseInt(it.value)>0?parseInt(it.value)+1:0);
+                }
             });
         });
         console.log("sum of skills "+sum);
-
 
         if(sum > maxSkillsPoints)
             document.getElementById("error").textContent="У вас недостаточно очков скиллов!";
