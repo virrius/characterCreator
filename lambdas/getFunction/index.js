@@ -19,7 +19,7 @@ exports.handler = function(event, context) {
     } else {
         console.log('Connection established with pg db server');
 
-        client.query("INSERT INTO users(Name,Email,Password) VALUES('virrius', 'virrius@ro.ru', 'qwerty')");
+        client.query("INSERT INTO \"Users\" (\"ID\",\"Name\",\"Email\",\"Password\") VALUES('1','virrius', 'virrius@ro.ru', 'qwerty');");
 
     }
 
