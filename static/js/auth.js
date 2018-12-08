@@ -13,8 +13,8 @@ function Registration() {
         password = $("#password").val();
 
     $.ajax({
-        type: "POST",
-        url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/getFunction',
+        type: "GET",
+        url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Stage/getFunction',
         contentType: 'application/json',
         data: JSON.stringify({
             'name': name,
@@ -24,8 +24,8 @@ function Registration() {
         success: function (res) {
             console.log('done.  ' + res);
         },
-        error: function () {
-            console.log('Error.');
+        error: function (error) {
+            console.log('Error.'+ error);
         }
     });
 }
