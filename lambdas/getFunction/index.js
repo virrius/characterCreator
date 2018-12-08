@@ -19,16 +19,16 @@ exports.handler= (event, context,callback) =>{
             console.log('Connection established with pg db server');
 
             client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');");
-            callback(null, {
-                statusCode: '200',
-                "headers": {
-                    "Access-Control-Allow-Origin": "*"
-                },
-                body: "AAAAAAAAA"
-            });
+
         }
     });
-
+    callback(null, {
+        statusCode: '200',
+        "headers": {
+            "Access-Control-Allow-Origin": "*"
+        },
+        body: "AAAAAAAAA" + new Date()
+    });
     console.log('Ending lambda at ' + new Date());
 
 
