@@ -12,6 +12,7 @@ exports.handler = function(event, context) {
     var client = new pg.Client(conn);
     client.connect();
     context.succeed("yep");
+    let err=false;
     if (err) {
         console.error('Error connecting to pg server' + err.stack);
         callback(err);
