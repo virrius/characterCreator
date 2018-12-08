@@ -31,7 +31,7 @@ exports.handler = function(event, context) {
             "headers": {
                 "Access-Control-Allow-Origin": "*"
             }
-        };
+        });
         console.log('Ending lambda at ' + new Date());
 
     });
