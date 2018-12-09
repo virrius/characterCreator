@@ -2,7 +2,7 @@ console.log('PostgreSQL GET Function');
 var pg = require("pg");
 exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
-    let userData=JSON.parse(event.data);
+    let userData=JSON.parse(event);
 
     let name= userData["name"];
     let mail = userData["email"];
@@ -12,7 +12,7 @@ exports.handler = function(event, context,callback) {
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
         port: 5432,
         user: 'virrius',
-        password: 'yaalz2027s',
+        password: 'yaalz2027',
         database: 'CharacterDB'
     });
     var client = new pg.Client(conn);
