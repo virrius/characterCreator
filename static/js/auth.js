@@ -7,14 +7,20 @@ $('.message a').click(function(){
 
 function Registration() {
     console.log("reg");
-
-
+    let name = $("#name").val();
+    let email = $("#email").val();
+    let password = $("#password").val();
+    console.log(name,email,password);
 
     $.ajax({
-        type: "get",
+        type: "POST",
         url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/authFunction',
-        data: $('#register').serialize(),
-        dataType: 'json',
+        data: JSON.stringify({
+            'name': name,
+            'email': email,
+            'password': password
+        }),
+        dataType: 'text',
         contentType: 'application/json',
         success: function (res) {
             document.location='index.html'
