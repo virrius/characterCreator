@@ -2,6 +2,11 @@ console.log('PostgreSQL GET Function');
 var pg = require("pg");
 exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
+    let userData=JSON.stringify(event);
+
+    let name= userData.name;
+    let mail = userData.email;
+    let password = userData.password;
     let conn = ({
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
         port: 5432,
@@ -20,7 +25,7 @@ exports.handler = function(event, context,callback) {
 
 
 
-            client.query("INSERT INTO users(name,mail,password) VALUES('virrius','vir@ro.ru','qwerty');",
+            client.query("INSERT INTO users(name,mail,password) VALUES("+name+","+mail+","+password+");",
                 function() {
 
                     client.end(function (err) {
@@ -31,7 +36,7 @@ exports.handler = function(event, context,callback) {
                             "headers": {
                                 "Access-Control-Allow-Origin": "*"
                             },
-                            body: "AAAAAAAAA"
+                            body: "added"
                         });
                     });
                 });

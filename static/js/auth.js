@@ -8,21 +8,16 @@ $('.message a').click(function(){
 function Registration() {
     console.log("reg");
 
-    var name = $("#name").val(),
-        email = $("#email").val(),
-        password = $("#password").val();
+
 
     $.ajax({
-        type: "GET",
-        url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Stage/getFunction',
+        type: "get",
+        url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/getFunction',
+        data: $('#register').serialize(),
+        dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify({
-            'name': name,
-            'email': email,
-            'password': password
-        }),
         success: function (res) {
-            console.log('done.  ' + res);
+            document.location='index.html'
         },
         error: function (error) {
             console.log('Error.'+ error);

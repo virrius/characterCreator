@@ -2,18 +2,18 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Template for deploying all lambdas
 Resources:
-  getFunction:
+  authFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
       Runtime: nodejs8.10
-      CodeUri: ../../lambdas/getFunction/getFunction.zip
+      CodeUri: ../../lambdas/authFunction/authFunction.zip
       Events:
         GetFuncApi:
           Type: Api
           Properties:
-            Path: /getFunction
-            Method: POST
+            Path: /authFunction
+            Method: POST, GET
   timeFunction:
     Type: AWS::Serverless::Function
     Properties:
