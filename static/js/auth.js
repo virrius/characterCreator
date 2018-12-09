@@ -12,7 +12,7 @@ function Registration() {
 
     $.ajax({
         type: "get",
-        url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/getFunction',
+        url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/authFunction',
         data: $('#register').serialize(),
         dataType: 'json',
         contentType: 'application/json',
