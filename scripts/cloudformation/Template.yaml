@@ -31,3 +31,39 @@ Resources:
           Properties:
             Path: /TimeResource
             Method: GET
+  regFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/regFunction/regFunction.zip
+      Events:
+        regFuncApiPOST:
+          Type: Api
+          Properties:
+            Path: /regFunction
+            Method: POST
+  saveFormFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/saveFormFunction/saveFormFunction.zip
+      Events:
+        saveFormFuncApi:
+          Type: Api
+          Properties:
+            Path: /saveFormFunction
+            Method: POST
+  getcharsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/getcharsFunction/getcharsFunction.zip
+      Events:
+        getcharsApi:
+          Type: Api
+          Properties:
+            Path: /getcharsFunction
+            Method: POST
