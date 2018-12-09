@@ -9,11 +9,16 @@ Resources:
       Runtime: nodejs8.10
       CodeUri: ../../lambdas/authFunction/authFunction.zip
       Events:
-        GetFuncApi:
+        authFuncApiPOST:
           Type: Api
           Properties:
             Path: /authFunction
-            Method: POST, GET
+            Method: POST
+        authFuncApiGET:
+          Type: Api
+          Properties:
+            Path: /authFunction
+            Method: GET
   timeFunction:
     Type: AWS::Serverless::Function
     Properties:
