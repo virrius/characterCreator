@@ -23,7 +23,12 @@ function Registration() {
         dataType: 'text',
         contentType: 'application/json',
         success: function (res) {
-            document.location='html/character.html'
+            if(res==="success") {
+                document.location = 'html/character.html'
+            }
+            else{
+                $('#error').innerText=res;
+            }
         },
         error: function (error) {
             console.log('Error.'+ error);

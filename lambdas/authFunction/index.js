@@ -35,7 +35,7 @@ exports.handler = function(event, context,callback) {
             console.log('Connection established with pg db server');
             let user= client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\');");
 
-            if(!user.empty())
+            if(!(user.length===0))
             {
                 callback(null, {
                     statusCode: '200',
