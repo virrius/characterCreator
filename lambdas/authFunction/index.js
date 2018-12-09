@@ -39,7 +39,7 @@ exports.handler = function(event, context,callback) {
                     console.log(users);
                     console.log(users.rows);
                     console.log(users.rows.length);
-                    if(!(users.rows===0))
+                    if(!(users.rows.length===0))
                     {
                         callback(null, {
                             statusCode: '200',
