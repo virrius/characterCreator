@@ -25,8 +25,8 @@ exports.handler = function(event, context,callback) {
             console.log('Connection established with pg db server');
 
 
-            console.log("INSERT INTO users(name,mail,password) VALUES("+name+","+mail+","+password+");");
-            client.query("INSERT INTO users(name,mail,password) VALUES(\""+name+"\",\""+mail+"\",\""+password+"\");",
+            console.log("INSERT INTO users(name,mail,password) VALUES(\'"+name+"\',\'"+mail+"\',\'"+password+"\');");
+            client.query("INSERT INTO users(name,mail,password) VALUES(\'"+name+"\',\'"+mail+"\',\'"+password+"\');",
 
                 function() {
 
