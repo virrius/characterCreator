@@ -23,7 +23,7 @@ function Registration() {
         dataType: 'text',
         contentType: 'application/json',
         success: function (res) {
-            document.location='index.html'
+            document.location='html/character.html'
         },
         error: function (error) {
             console.log('Error.'+ error);
