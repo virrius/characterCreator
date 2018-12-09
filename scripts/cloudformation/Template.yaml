@@ -13,7 +13,7 @@ Resources:
           Type: Api
           Properties:
             Path: /getFunction
-            Method: GET
+            Method: POST
   timeFunction:
     Type: AWS::Serverless::Function
     Properties:
