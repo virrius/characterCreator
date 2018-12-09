@@ -37,7 +37,7 @@ exports.handler = function(event, context,callback) {
             client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
                 (err, users)=>{
                     console.log(users);
-                    if(!(users.length===0))
+                    if(!(users.rows===0))
                     {
                         callback(null, {
                             statusCode: '200',
