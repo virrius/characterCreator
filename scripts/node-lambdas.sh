@@ -8,7 +8,7 @@ if [ "$1" = "build" ]; then
 
 
 elif [ "$1" = "package" ]; then
-  cd $HOME_DIR/lambdas/authFunction && zip -9rq getFunction.zip .
+  cd $HOME_DIR/lambdas/authFunction && zip -9rq authFunction.zip .
   cd $HOME_DIR/lambdas/timeFunction && zip -9rq timeFunction.zip .
 
 
