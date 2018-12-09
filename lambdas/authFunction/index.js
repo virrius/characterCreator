@@ -7,7 +7,7 @@ exports.handler = function(event, context,callback) {
     let name= userData["name"];
     let mail = userData["email"];
     let password = userData["password"];
-    console.log(name,email,password);
+    console.log(name,mail,password);
     let conn = ({
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
         port: 5432,
