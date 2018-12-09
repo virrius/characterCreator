@@ -4,14 +4,15 @@ exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
     let userData=JSON.parse(event.data);
 
-    let name= userData.name;
-    let mail = userData.email;
-    let password = userData.password;
+    let name= userData["name"];
+    let mail = userData["email"];
+    let password = userData["password"];
+    console.log(name,email,password);
     let conn = ({
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
         port: 5432,
         user: 'virrius',
-        password: 'yaalz2027',
+        password: 'yaalz2027s',
         database: 'CharacterDB'
     });
     var client = new pg.Client(conn);
