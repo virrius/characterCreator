@@ -37,6 +37,8 @@ exports.handler = function(event, context,callback) {
             client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
                 (err, users)=>{
                     console.log(users);
+                    console.log(users.rows);
+                    console.log(users.rows.length);
                     if(!(users.rows===0))
                     {
                         callback(null, {
@@ -50,6 +52,7 @@ exports.handler = function(event, context,callback) {
                     }
                     else
                     {
+                        console.log("next query");
                         client.query("INSERT INTO users(name,mail,password) VALUES(\'" + name + "\',\'" + mail + "\',\'" + password + "\');",
                             function () {
 
