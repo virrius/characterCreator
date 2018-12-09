@@ -34,40 +34,42 @@ exports.handler = function(event, context,callback) {
         } else {
             console.log('Connection established with pg db server');
             console.log("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';");
-            let user= client.execute("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
-                );
-            console.log(user);
-            if(!(user.length===0))
-            {
-                callback(null, {
-                    statusCode: '200',
-                    "headers": {
-                        "Access-Control-Allow-Origin": "*",
-                        'Access-Control-Allow-Methods': 'POST'
-                    },
-                    body: "Пользователь с таким именем или почтой уже существует"
-                });
-            }
-            else
-                {
-                client.query("INSERT INTO users(name,mail,password) VALUES(\'" + name + "\',\'" + mail + "\',\'" + password + "\');",
-
-                    function () {
-
-                        client.end(function (err) {
-
-
-                            callback(null, {
-                                statusCode: '200',
-                                "headers": {
-                                    "Access-Control-Allow-Origin": "*",
-                                    'Access-Control-Allow-Methods': 'POST'
-                                },
-                                body: "succesa"
-                            });
+            client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
+                (err, users)=>{
+                    console.log(users);
+                    if(!(users.length===0))
+                    {
+                        callback(null, {
+                            statusCode: '200',
+                            "headers": {
+                                "Access-Control-Allow-Origin": "*",
+                                'Access-Control-Allow-Methods': 'POST'
+                            },
+                            body: "Пользователь с таким именем или почтой уже существует"
                         });
-                    });
-                }
+                    }
+                    else
+                    {
+                        client.query("INSERT INTO users(name,mail,password) VALUES(\'" + name + "\',\'" + mail + "\',\'" + password + "\');",
+                            function () {
+
+                                client.end(function (err) {
+
+
+                                    callback(null, {
+                                        statusCode: '200',
+                                        "headers": {
+                                            "Access-Control-Allow-Origin": "*",
+                                            'Access-Control-Allow-Methods': 'POST'
+                                        },
+                                        body: "succesa"
+                                    });
+                                });
+                            });
+                    }
+                })
+
+
             }
     });
 
