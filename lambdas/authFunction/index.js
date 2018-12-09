@@ -22,14 +22,15 @@ exports.handler = function(event, context,callback) {
     client.connect((err) => {
         if (err) {
             console.error('Error connecting to pg server' + err.stack);
-
-            callback(null, {
-                statusCode: '200',
-                "headers": {
-                    "Access-Control-Allow-Origin": "*",
-                    'Access-Control-Allow-Methods': 'POST'
-                },
-                body: 'Ошибка соединения с базой данных '
+            client.end(function (err) {
+                callback(null, {
+                    statusCode: '200',
+                    "headers": {
+                        "Access-Control-Allow-Origin": "*",
+                        'Access-Control-Allow-Methods': 'POST'
+                    },
+                    body: 'Ошибка соединения с базой данных '
+                });
             });
         } else {
             console.log('Connection established with pg db server');
@@ -41,13 +42,15 @@ exports.handler = function(event, context,callback) {
                     console.log(users.rows.length);
                     if(!(users.rows.length===0))
                     {
-                        callback(null, {
-                            statusCode: '200',
-                            "headers": {
-                                "Access-Control-Allow-Origin": "*",
-                                'Access-Control-Allow-Methods': 'POST'
-                            },
-                            body: "Пользователь с таким именем или почтой уже существует"
+                        client.end(function (err) {
+                            callback(null, {
+                                statusCode: '200',
+                                "headers": {
+                                    "Access-Control-Allow-Origin": "*",
+                                    'Access-Control-Allow-Methods': 'POST'
+                                },
+                                body: "Пользователь с таким именем или почтой уже существует"
+                            });
                         });
                     }
                     else
