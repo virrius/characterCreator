@@ -33,8 +33,8 @@ exports.handler = function(event, context,callback) {
             });
         } else {
             console.log('Connection established with pg db server');
-            let user= client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\');");
-
+            let user= client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';");
+            console.log(user);
             if(!(user.length===0))
             {
                 callback(null, {
