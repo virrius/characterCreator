@@ -34,7 +34,7 @@ exports.handler = function(event, context,callback) {
         } else {
             console.log('Connection established with pg db server');
             console.log("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';");
-            let user= client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
+            let user= client.executeSql("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
                 );
             console.log(user);
             if(!(user.length===0))
