@@ -2,7 +2,8 @@ console.log('PostgreSQL GET Function');
 var pg = require("pg");
 exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
-
+    console.log(event.body['agility']);
+    console.log(event.body.split('&'));
 /*
 
         let conn = ({
