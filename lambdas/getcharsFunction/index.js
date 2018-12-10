@@ -29,8 +29,8 @@ exports.handler = function(event, context,callback) {
             });
         } else {
             console.log('Connection established with pg db server');
-            console.log("SELECT name,description FROM characters WHERE owner=\""+name+ "\";");
-            client.query("SELECT name,description FROM characters WHERE owner=\""+name+ "\";",
+            console.log("SELECT name,description FROM characters WHERE owner=\'"+name+ "\';");
+            client.query("SELECT name,description FROM characters WHERE owner=\'"+name+ "\';",
                 (err, users)=>{
                     console.log(users);
                     console.log(users.rows);
