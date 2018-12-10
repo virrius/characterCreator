@@ -35,9 +35,9 @@ exports.handler = function(event, context,callback) {
         }
         else {
             console.log('Connection established with pg db server');
-            let SQL1="SELECT column_name FROM information_schema.columns WHERE table_name ='characteristics'"
+            let SQL1="SELECT column_name FROM information_schema.columns WHERE table_name ='characteristics';";
             console.log(SQL1);
-            client.query(SQL1,
+            client.query("SELECT column_name FROM information_schema.columns WHERE table_name ='characteristics';",
                 (err, characteristics)=> {
                     callback(null, {
                         statusCode: '200',
