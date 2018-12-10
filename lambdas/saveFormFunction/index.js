@@ -117,7 +117,7 @@ exports.handler = function(event, context,callback) {
                                                                         "Access-Control-Allow-Origin": "*",
                                                                         'Access-Control-Allow-Methods': 'POST'
                                                                     },
-                                                                    body: 'success'                                                                });
+                                                                    body: "success"                                                                });
                                                             });
                                                         }
                                                     )
