@@ -9,6 +9,14 @@ $(document).ready(function($) {
 
     $('#reg').on("click",Registration);
     $('#login').on("click",Authorization);
+    let name=getCookie('userName');
+    let pass=getCookie('userPassword');
+    if(name!==undefined&&pass!==undefined)
+    {
+        Authorization(name,pass);
+    }
+
+
 
 
     function Registration() {
@@ -44,6 +52,8 @@ $(document).ready(function($) {
             contentType: 'application/json',
             success: function (res) {
                 if (res === "success") {
+                    setCookie('userName',regName);
+                    setCookie('userPassword',regPassword);
                     document.location = 'html/character.html'
                 }
                 else {
@@ -57,21 +67,28 @@ $(document).ready(function($) {
 
     }
 
-    function Authorization() {
+    function Authorization(authName=undefined,authPassword=undefined) {
         console.log("auth");
 
-        let authName = $("#authName").val();
-        let authPassword = $("#authPassword").val();
+        if(authName===undefined) {
+            authName = $("#authName").val();
+            if (!nameRegex.test(authName)) {
 
-        if (!nameRegex.test(authName)) {
-            error.textContent = "Неверное имя. Имя должно состоять из: [a-z][A-Z][0-9] 3-50 символов";
-            return;
+                error.textContent = "Неверное имя. Имя должно состоять из: [a-z][A-Z][0-9] 3-50 символов";
+                return;
+            }
         }
-        console.log(authPassword.length);
-        if (!(passwordRegex.test(authPassword)) || authPassword.length < 7) {
-            error.textContent = "Неверный пароль. Пароль должен содержать комбинацию из: [a-z][A-Z][0-9] 7+ символов";
-            return;
+        if(authPassword===undefined) {
+            authPassword = $("#authPassword").val();
+            if (!(passwordRegex.test(authPassword)) || authPassword.length < 7) {
+                error.textContent = "Неверный пароль. Пароль должен содержать комбинацию из: [a-z][A-Z][0-9] 7+ символов";
+                return;
+            }
         }
+
+
+
+
         $.ajax({
             type: "POST",
             url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/regFunction',
@@ -83,6 +100,8 @@ $(document).ready(function($) {
             contentType: 'application/json',
             success: function (res) {
                 if (res === "success") {
+                    setCookie('userName',authName);
+                    setCookie('userPassword',authPassword);
                     document.location = 'html/character.html'
                 }
                 else {
