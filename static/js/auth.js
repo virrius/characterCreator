@@ -9,11 +9,11 @@ $(document).ready(function($) {
 
     $('#reg').on("click",Registration);
     $('#login').on("click",Authorization);
-    let name=getCookie('userName');
-    let pass=getCookie('userPassword');
-    if(name!==undefined&&pass!==undefined)
+    var cookieName=getCookie('userName');
+    var cookiePass=getCookie('userPassword');
+    if(cookieName!==undefined&&cookiePass!==undefined)
     {
-        Authorization(name,pass);
+        Authorization(cookieName,cookiePass);
     }
 
 
@@ -54,7 +54,7 @@ $(document).ready(function($) {
                 if (res === "success") {
                     setCookie('userName',regName);
                     setCookie('userPassword',regPassword);
-                    document.location = 'html/character.html'
+                    document.location = 'html/charlist.html'
                 }
                 else {
                     error.textContent = res;
@@ -67,11 +67,14 @@ $(document).ready(function($) {
 
     }
 
-    function Authorization(authName=undefined,authPassword=undefined) {
+    function Authorization() {
+        let authName=cookieName;
+        let authPassword=cookiePass;
         console.log("auth");
-
+        console.log(authName,authPassword);
         if(authName===undefined) {
             authName = $("#authName").val();
+            console.log(authName);
             if (!nameRegex.test(authName)) {
 
                 error.textContent = "Неверное имя. Имя должно состоять из: [a-z][A-Z][0-9] 3-50 символов";
@@ -85,7 +88,7 @@ $(document).ready(function($) {
                 return;
             }
         }
-
+        console.log(authName,authPassword);
 
 
 
@@ -102,7 +105,7 @@ $(document).ready(function($) {
                 if (res === "success") {
                     setCookie('userName',authName);
                     setCookie('userPassword',authPassword);
-                    document.location = 'html/character.html'
+                    document.location = 'html/charlist.html'
                 }
                 else {
                     error.textContent = res;
