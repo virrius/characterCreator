@@ -51,12 +51,12 @@ exports.handler = function(event, context,callback) {
                 })
             }
 
-        }
+        
 
 
 
     });
-        */
+
 
     console.log('Ending lambda at ' + new Date());
 
