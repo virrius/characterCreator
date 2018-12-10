@@ -39,15 +39,16 @@ exports.handler = function(event, context,callback) {
             console.log(SQL1);
             client.query("SELECT column_name FROM information_schema.columns WHERE table_name ='characteristics';",
                 (err, characteristics)=> {
-                    callback(null, {
-                        statusCode: '200',
-                        "headers": {
-                            "Access-Control-Allow-Origin": "*",
-                            'Access-Control-Allow-Methods': 'POST'
-                        },
-                        body: characteristics.rows
-                    });
-
+                    client.end(function (err) {
+                        callback(null, {
+                            statusCode: '200',
+                            "headers": {
+                                "Access-Control-Allow-Origin": "*",
+                                'Access-Control-Allow-Methods': 'POST'
+                            },
+                            body: characteristics.rows
+                        });
+                    })
                 })
             }
 
