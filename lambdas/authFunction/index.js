@@ -2,8 +2,10 @@ console.log('PostgreSQL GET Function');
 var pg = require("pg");
 exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
-    console.log(event.body['agility']);
-    console.log(event.body.split('&'));
+    let userData=JSON.parse(event.body);
+    let name= userData["name"];
+    let mail = userData["email"];
+    let password = userData["password"];
     console.log(name,mail,password);
 
 
