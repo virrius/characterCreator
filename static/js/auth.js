@@ -54,7 +54,7 @@ $(document).ready(function($) {
                 if (res === "success") {
                     setCookie('userName',regName);
                     setCookie('userPassword',regPassword);
-                    document.location = 'html/charlist.html'
+                    document.location = '../html/charlist.html'
                 }
                 else {
                     error.textContent = res;
@@ -105,7 +105,7 @@ $(document).ready(function($) {
                 if (res === "success") {
                     setCookie('userName',authName);
                     setCookie('userPassword',authPassword);
-                    document.location = 'html/charlist.html'
+                    document.location = '../html/charlist.html'
                 }
                 else {
                     error.textContent = res;

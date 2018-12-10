@@ -6,7 +6,7 @@ $(document).ready(function($) {
 
     $('#characteristics input[type=radio]').on('change', characteristicsChanged);
     $('#skills input[type=radio]').on('change',skillsChanged);
-
+    $('#testBDbutton').on('click', FindBD);
 
 
     function characteristicsChanged()
@@ -61,9 +61,11 @@ $(document).ready(function($) {
 
 
     function FindBD() {
+        console.log($('#charForm').serialize());
         $.ajax({
-            url: " https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Stage/TimeResource",
-            type: "get",
+            url: " https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
+            type: "POST",
+            data: $('#charForm').serialize(),
             dataType: "text",
             success:function (result){
                 console.log("Success: " + result);
