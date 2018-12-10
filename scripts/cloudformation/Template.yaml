@@ -1,0 +1,69 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Template for deploying all lambdas
+Resources:
+  authFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/authFunction/authFunction.zip
+      Events:
+        authFuncApiPOST:
+          Type: Api
+          Properties:
+            Path: /authFunction
+            Method: POST
+        authFuncApiGET:
+          Type: Api
+          Properties:
+            Path: /authFunction
+            Method: GET
+  timeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/timeFunction/timeFunction.zip
+      Events:
+        MyTimeApi:
+          Type: Api
+          Properties:
+            Path: /TimeResource
+            Method: GET
+  regFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/regFunction/regFunction.zip
+      Events:
+        regFuncApiPOST:
+          Type: Api
+          Properties:
+            Path: /regFunction
+            Method: POST
+  saveFormFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/saveFormFunction/saveFormFunction.zip
+      Events:
+        saveFormFuncApi:
+          Type: Api
+          Properties:
+            Path: /saveFormFunction
+            Method: POST
+  getcharsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: ../../lambdas/getcharsFunction/getcharsFunction.zip
+      Events:
+        getcharsApi:
+          Type: Api
+          Properties:
+            Path: /getcharsFunction
+            Method: POST

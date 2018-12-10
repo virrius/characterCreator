@@ -1,13 +1,30 @@
-
 version: 0.2
 phases:
   install:
     commands:
-      - npm install time
-      - aws cloudformation package --template-file Template.yaml  --s3-bucket charactercreator 
-                                   --output-template-file outputTemplate.yaml
+      - echo Starting to install, build modules on `date`
+      - export HOME_DIR=$CODEBUILD_SRC_DIR
+      - npm set progress=false
+      - sh $HOME_DIR/scripts/node-lambdas.sh build
+
+
+  build:
+    commands:
+      - echo Packaging started on `date`
+      - sh $HOME_DIR/scripts/node-lambdas.sh package
+  post_build:
+    commands:
+      - cd $HOME_DIR/scripts/cloudformation/
+      - aws cloudformation package --template-file Template.yaml --s3-bucket charactercreator --output-template-file outputTemplate.yaml
+
+
+cache:
+  paths:
+    - '/root/.npm/**/*'
+    - '/usr/lib/node_modules/**/*'
 artifacts:
-  type: zip
+  types: zip
   files:
-    - Template.yaml
-    - outputTemplate.yaml
+    - scripts/cloudformation/outputTemplate.yaml
+    - scripts/cloudformation/aws-serverless-parameter.json
+
