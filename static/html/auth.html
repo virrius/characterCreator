@@ -13,19 +13,20 @@
     <div class="form">
         <div id="error">ERROR</div>
         <form class="register-form" id="register">
-            <input id="name" type="text" placeholder="name"/>
-            <input id="password" type="text" placeholder="password"/>
-            <input id="email" type="email" placeholder="email address"/>
+            <input id="regName" type="text" placeholder="name"/>
+            <input id="regPassword" type="password" placeholder="password"/>
+            <input id="regEmail" type="email" placeholder="email address"/>
 
             <p class="message">Already registered? <a href="#1">Sign In</a></p>
         </form>
         <button id="submit" onclick="Registration()">create</button>
         <form class="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
+            <input id="authName" type="text" placeholder="username"/>
+            <input id="authPassword" type="password" placeholder="password"/>
+
             <p class="message">Not registered? <a href="#2">Create an account</a></p>
         </form>
+        <button id="login" onclick="Authorization()">login</button>
     </div>
 </div>
 </body>

@@ -4,9 +4,8 @@ exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
     let userData=JSON.parse(event.body);
     let name= userData["name"];
-    let mail = userData["email"];
     let password = userData["password"];
-    console.log(name,mail,password);
+
 
 
     let conn = ({
@@ -17,7 +16,7 @@ exports.handler = function(event, context,callback) {
         database: 'CharacterDB'
     });
     let client = new pg.Client(conn);
-    let err=false;
+
     client.connect((err) => {
         if (err) {
             console.error('Error connecting to pg server' + err.stack);
@@ -33,12 +32,9 @@ exports.handler = function(event, context,callback) {
             });
         } else {
             console.log('Connection established with pg db server');
-            console.log("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';");
-            client.query("SELECT name FROM users WHERE name=\'"+name+"\' or mail= \'"+mail+"\';",
+            console.log("SELECT name FROM users WHERE name=\'"+name+"\' and password= \'"+password+"\';");
+            client.query("SELECT name FROM users WHERE name=\'"+name+"\' and password= \'"+password+"\';",
                 (err, users)=>{
-                    console.log(users);
-                    console.log(users.rows);
-                    console.log(users.rows.length);
                     if(!(users.rows.length===0))
                     {
                         client.end(function (err) {
@@ -48,29 +44,26 @@ exports.handler = function(event, context,callback) {
                                     "Access-Control-Allow-Origin": "*",
                                     'Access-Control-Allow-Methods': 'POST'
                                 },
-                                body: "Пользователь с таким именем или почтой уже существует"
+                                body: "success"
                             });
                         });
                     }
                     else
                     {
-                        console.log("next query");
-                        client.query("INSERT INTO users(name,mail,password) VALUES(\'" + name + "\',\'" + mail + "\',\'" + password + "\');",
-                            function () {
-
-                                client.end(function (err) {
-
-
-                                    callback(null, {
-                                        statusCode: '200',
-                                        "headers": {
-                                            "Access-Control-Allow-Origin": "*",
-                                            'Access-Control-Allow-Methods': 'POST'
-                                        },
-                                        body: "success"
-                                    });
-                                });
+                        client.end(function (err)
+                        {
+                            callback(null, {
+                                statusCode: '200',
+                                "headers": {
+                                    "Access-Control-Allow-Origin": "*",
+                                    'Access-Control-Allow-Methods': 'POST'
+                                },
+                                body: "Пользователь не найден. Проверьте логин или пароль"
                             });
+
+
+                        });
+
                     }
                 })
 
