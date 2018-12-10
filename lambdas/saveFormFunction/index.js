@@ -10,7 +10,6 @@ exports.handler = function(event, context,callback) {
         obj[data[key].split("=")[0]] = data[key].split("=")[1];
     }
 
-    console.log(req.body);
 
     let conn = ({
         host: 'characterdb.c4mkdpklb4rf.us-east-2.rds.amazonaws.com',
@@ -111,7 +110,15 @@ exports.handler = function(event, context,callback) {
                                                         (err,res)=>
                                                         {
 
-                                                            console.log(res+" success");
+                                                            client.end(function (err) {
+                                                                callback(null, {
+                                                                    statusCode: '200',
+                                                                    "headers": {
+                                                                        "Access-Control-Allow-Origin": "*",
+                                                                        'Access-Control-Allow-Methods': 'POST'
+                                                                    },
+                                                                    body: 'success'                                                                });
+                                                            });
                                                         }
                                                     )
 
