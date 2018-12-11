@@ -16,10 +16,14 @@ $(document).ready(function($) {
             success: function (res) {
                 res.forEach(function (item,i,arr) {
                     let char = document.createElement('div');
+                    let charName=item['name'];
+
+                    let charDesc=item['description'];
+
                     char.innerHTML = `
                         <div class="row">
-                            <div class="col-3">${item['name']}</div>
-                            <div class="col-9">${item['description']}</div>
+                            <div class="col-3">${charName}</div>
+                            <div class="col-9">${charDesc}</div>
                         </div>
                     `;
                     table.appendChild(char);

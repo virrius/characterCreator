@@ -1,3 +1,4 @@
+
 $(document).ready(function($) {
     var maxCharsPoints = 5;
     var maxSkillsPoints = 15;
@@ -61,15 +62,35 @@ $(document).ready(function($) {
 
 
     function FindBD() {
-        console.log($('#charForm').serialize());
+        let charname=$('#charname').val();
+        let chardesc=$("#chardescription").val();
+        var data = `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`.split("&");
+        console.log(data);
+        var obj={};
+        for(var key in data)
+        {
+            console.log(data[key]);
+            obj[data[key].split("=")[0]] = data[key].split("=")[1];
+        }
+
+        console.log(obj);
+        console.log(obj['azazaz']);
+        console.log(`charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`);
+
+
         $.ajax({
-            url: " https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
+            /*'http://127.0.0.1:3000/we',*/
+            url: "https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
             type: "POST",
-            data: $('#charForm').serialize(),
-            dataType: "text",
+            data: /*JSON.stringify({
+                    form: $('#charForm').serialize(),
+                    userName: getCookie('userName')
+                }),*/
+                `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
+            dataType: 'text',
             success:function (result){
-                console.log("Success: " + result);
-                document.getElementById("time").innerText=result;
+
+                document.location='../html/charlist.html';
             },
             error:function (error) {
                 console.log("Fail: " + JSON.stringify(error));
@@ -81,18 +102,3 @@ $(document).ready(function($) {
 
 
 });
-function showTime(){
-    $.ajax({
-        url: " https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Stage/TimeResource",
-        type: 'get',
-        dataType: "text",
-        success:function (result){
-            console.log("Success: " + result);
-            document.getElementById("time").innerText=result;
-        },
-        error:function (error) {
-            console.log("Fail: " + JSON.stringify(error));
-            console.log("Fail: " + error);
-        }
-    });
-}
