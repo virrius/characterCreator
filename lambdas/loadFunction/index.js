@@ -39,18 +39,18 @@ exports.handler = function(event, context,callback) {
             client.query("SELECT charname, race, gender, chardescription,backstory, hindrances  FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\';",
                 (err, characters)=>{
 
-                    charjson=`{'attributes': ${JSON.stringify(characters.rows)}}`;
+                    charjson=`{"attributes": ${JSON.stringify(characters.rows)}}`;
                     console.log("SELECT * FROM characteristics WHERE id IN (SELECT characteristics FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');");
                     client.query("SELECT * FROM characteristics WHERE id IN (SELECT characteristics FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');",
                         (err,characteristics)=>{
 
-                            charjson+=`{'characteristics': ${JSON.stringify(characteristics.rows)}}`;
+                            charjson+=`{"characteristics": ${JSON.stringify(characteristics.rows)}}`;
 
                             console.log("SELECT * FROM skills WHERE id IN (SELECT skills FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');");
                             client.query("SELECT * FROM skills WHERE id IN (SELECT skills FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');",
                                 (err,skills)=>{
 
-                                    charjson+=`{'skills': ${JSON.stringify(skills.rows)}}`;
+                                    charjson+=`{"skills": ${JSON.stringify(skills.rows)}}`;
                                     console.log(charjson);
                                     client.end(function (err) {
                                         callback(null, {
