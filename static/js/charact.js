@@ -6,12 +6,15 @@ $(document).ready(function($) {
     var characteristics = ["strength","agility","smarts", "vigor", "spirit"];
     var characteristicValues=[0,0,0,0,0];
 
+
     $('#characteristics input[type=radio]').on('change', characteristicsChanged);
     $('#skills input[type=radio]').on('change',skillsChanged);
     $('#testBDbutton').on('click', FindBD);
 
+
     loadChar();
     characteristicsChanged();
+    oldCharName=$("#charname").val();
 
     function characteristicsChanged()
     {
@@ -56,44 +59,7 @@ $(document).ready(function($) {
         else
             document.getElementById("error").textContent="";
     }
-    function FindBD() {
-        let charname=$('#charname').val();
-        let chardesc=$("#chardescription").val();
-        var data = `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`.split("&");
-        console.log(data);
-        var obj={};
-        for(var key in data)
-        {
-            console.log(data[key]);
-            obj[data[key].split("=")[0]] = data[key].split("=")[1];
-        }
 
-        console.log(obj);
-        console.log(obj['azazaz']);
-        console.log(`charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`);
-
-
-        $.ajax({
-            /*'http://127.0.0.1:3000/we',*/
-            url: "https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
-            type: "POST",
-            data: /*JSON.stringify({
-                    form: $('#charForm').serialize(),
-                    userName: getCookie('userName')
-                }),*/
-                `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
-            dataType: 'text',
-            success:function (result){
-
-                document.location='../html/charlist.html';
-            },
-            error:function (error) {
-                console.log("Fail: " + JSON.stringify(error));
-                console.log("Fail: " + error);
-            }
-        });
-
-    }
     function setDice(point) {
         let Dices = ['--', 'd4', 'd6', 'd8', 'd10', 'd12'];
 
@@ -102,10 +68,41 @@ $(document).ready(function($) {
 
 });
 
+var oldCharName;
 
 
+function FindBD() {
+    let charname=$('#charname').val();
+    let chardesc=$("#chardescription").val();
+    var data = `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`.split("&");
+    console.log(data);
+    var obj={};
+    for(var key in data)
+    {
+        console.log(data[key]);
+        obj[data[key].split("=")[0]] = data[key].split("=")[1];
+    }
 
+    console.log(obj);
+    console.log(`oldCharName=${oldCharName} &charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`);
 
+        $.ajax({
+        /*'http://127.0.0.1:3000/we',*/
+        url: "https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
+        type: "POST",
+        data: `oldCharName=${oldCharName} &charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
+        dataType: 'text',
+        success:function (result){
+
+            document.location='../html/charlist.html';
+        },
+        error:function (error) {
+            console.log("Fail: " + JSON.stringify(error));
+            console.log("Fail: " + error);
+        }
+    });
+
+}
 
 function loadChar()
 {
@@ -113,6 +110,7 @@ function loadChar()
     let char=JSON.parse("{"+ sessionStorage.getItem('charjson')+"}");
     if(char===undefined)
     {
+
         return;
     }
 

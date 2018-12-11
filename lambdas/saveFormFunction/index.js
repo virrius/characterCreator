@@ -35,6 +35,19 @@ exports.handler = function(event, context,callback) {
             });
         }
         else {
+
+            let SQL="DELETE FROM characters WHERE charname='"+ obj['oldCharName']+"' RETURNING characteristics,skills;";
+            console.log(SQL);
+            client.query("DELETE FROM characters WHERE charname='"+ obj['oldCharName']+"' RETURNING characteristics,skills;",
+                (err, ids)=>{
+                    console.log(ids.rows);
+                    client.query("DELETE FROM characteristics WHERE id='"+ ids.rows[0]['characteristics']+"';");
+                    client.query("DELETE FROM skills WHERE id='"+ ids.rows[1]['skills']+"';");
+
+
+                });
+
+
             var characteristicsID;
             var skillsID;
             let userName=obj['userName'];
