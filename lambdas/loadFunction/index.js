@@ -39,18 +39,18 @@ exports.handler = function(event, context,callback) {
             client.query("SELECT charname, race, gender, chardescription,backstory, hindrances  FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\';",
                 (err, characters)=>{
 
-                    charjson=JSON.stringify(characters.rows);
+                    charjson=JSON.stringify(characters.rows).slice(2,-2)+", ";
                     console.log("SELECT * FROM characteristics WHERE id IN (SELECT characteristics FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');");
                     client.query("SELECT * FROM characteristics WHERE id IN (SELECT characteristics FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');",
                         (err,characteristics)=>{
 
-                            charjson+=JSON.stringify(characteristics.rows);
+                            charjson+=JSON.stringify(characteristics.rows).slice(2,-2)+", ";
 
                             console.log("SELECT * FROM skills WHERE id IN (SELECT skills FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');");
                             client.query("SELECT * FROM skills WHERE id IN (SELECT skills FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');",
                                 (err,skills)=>{
 
-                                    charjson+=JSON.stringify(skills.rows);
+                                    charjson+=JSON.stringify(skills.rows).slice(2,-2);
                                     console.log(charjson);
                                     client.end(function (err) {
                                         callback(null, {
