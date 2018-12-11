@@ -55,17 +55,18 @@ function selectChar(element){
     }),);
     $.ajax({
         /*'http://127.0.0.1:3000/we',*/
-        url:"https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/timeFunction",
-        type: "GET",
-                data:   {
-                        charName: charName,
-                        userName: getCookie('userName')
-                        },
+        url:"https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/loadFunction",
+        type: "POST",
+                data:   JSON.stringify({
+                        'charName': charName,
+                        'userName': getCookie('userName')
+                }),
 
         dataType: 'text',
         success:function (result){
 
-            console.log(result);
+            sessionStorage.setItem('charjson',result);
+            document.location='../html/character.html';
         },
         error:function (error) {
             console.log("Fail: " + JSON.stringify(error));

@@ -1,5 +1,6 @@
 
 $(document).ready(function($) {
+
     var maxCharsPoints = 5;
     var maxSkillsPoints = 15;
     var characteristics = ["strength","agility","smarts", "vigor", "spirit"];
@@ -9,6 +10,8 @@ $(document).ready(function($) {
     $('#skills input[type=radio]').on('change',skillsChanged);
     $('#testBDbutton').on('click', FindBD);
 
+    loadChar();
+    characteristicsChanged();
 
     function characteristicsChanged()
     {
@@ -19,7 +22,7 @@ $(document).ready(function($) {
             sum =sum+val;
             characteristicValues[i]=val;
             if(i===characteristics.indexOf("vigor")){
-               document.getElementById("toughness").innerText=4+val;
+                document.getElementById("toughness").innerText=4+val;
             }
 
         }
@@ -53,14 +56,6 @@ $(document).ready(function($) {
         else
             document.getElementById("error").textContent="";
     }
-
-    function setDice(point) {
-        let Dices = ['--', 'd4', 'd6', 'd8', 'd10', 'd12'];
-
-        return Dices[point];
-    }
-
-
     function FindBD() {
         let charname=$('#charname').val();
         let chardesc=$("#chardescription").val();
@@ -99,6 +94,67 @@ $(document).ready(function($) {
         });
 
     }
+    function setDice(point) {
+        let Dices = ['--', 'd4', 'd6', 'd8', 'd10', 'd12'];
 
+        return Dices[point];
+    }
 
 });
+
+
+
+
+
+
+function loadChar()
+{
+
+    let char=JSON.parse("{"+ sessionStorage.getItem('charjson')+"}");
+    if(char===undefined)
+    {
+        return;
+    }
+
+    console.log(char);
+    populateForm($('#charForm'),char);
+
+    sessionStorage.clear();
+    $('#charname').val(char['charname']);
+    $('#chardescription').val(char['chardescription'])
+
+
+
+
+
+}
+
+function resetForm($form)
+{
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+}
+
+function populateForm(form, data) {
+    $.each(data, function(key, value) {
+
+        if(value !== null && typeof value === 'object' ) {
+            this.populateForm(form, value);
+        }
+        else {
+            var ctrl = $('[name='+key+']', form);
+            switch(ctrl.prop("type")) {
+                case "radio": case "checkbox":
+                ctrl.each(function() {
+                    $(this).prop("checked",value);
+                });
+                break;
+                default:
+                    ctrl.val(value);
+            }
+        }
+    }.bind(this));
+
+}
+
+
