@@ -1,4 +1,6 @@
 $(document).ready(function($) {
+
+
     let userName=getCookie('userName');
     if(userName===undefined)
     {
@@ -16,17 +18,20 @@ $(document).ready(function($) {
             success: function (res) {
                 res.forEach(function (item,i,arr) {
                     let char = document.createElement('div');
-                    let charName=item['name'];
+                    char.id = `character-${i}`;
 
                     let charDesc=item['description'];
 
                     char.innerHTML = `
                         <div class="row">
-                            <div class="col-3">${charName}</div>
-                            <div class="col-9">${charDesc}</div>
+                            <div id="char-name-${i}" class="col-3">${item['charname']}</div>
+                            <div class="col-9">${item['chardescription']}</div>
                         </div>
                     `;
                     table.appendChild(char);
+                    $(`#char-name-${i}`).click((event) => {
+                        selectChar(event.target);
+                    });
                 });
             },
             error: function (error) {
@@ -39,4 +44,32 @@ $(document).ready(function($) {
 
 function newChar() {
     document.location='../html/character.html';
+}
+
+function selectChar(element){
+    console.log(element);
+    let charName=element.innerText;
+    console.log(JSON.stringify({
+        charName: charName,
+        userName: getCookie('userName')
+    }),);
+    $.ajax({
+        /*'http://127.0.0.1:3000/we',*/
+        url:'http://127.0.0.1:3000/we', //"https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
+        type: "POST",
+                data:   {
+                        charName: charName,
+                        userName: getCookie('userName')
+                        },
+
+        dataType: 'text',
+        success:function (result){
+
+            console.log(result);
+        },
+        error:function (error) {
+            console.log("Fail: " + JSON.stringify(error));
+            console.log("Fail: " + error);
+        }
+    });
 }
