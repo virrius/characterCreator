@@ -44,13 +44,14 @@ exports.handler = function(event, context,callback) {
                     client.query("SELECT * FROM characteristics WHERE id IN (SELECT characteristics FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');",
                         (err,characteristics)=>{
 
-                            charjson+=`{skills: ${JSON.stringify(characteristics.rows)}}`;
+                            charjson+=`{characteristics: ${JSON.stringify(characteristics.rows)}}`;
 
                             console.log("SELECT * FROM skills WHERE id IN (SELECT skills FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');");
                             client.query("SELECT * FROM skills WHERE id IN (SELECT skills FROM characters WHERE charname=\'"+charName+"\' and owner=\'"+userName+"\');",
                                 (err,skills)=>{
 
                                     charjson+=`{skills: ${JSON.stringify(skills.rows)}}`;
+                                    console.log(charjson);
                                     client.end(function (err) {
                                         callback(null, {
                                             statusCode: '200',
