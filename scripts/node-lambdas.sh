@@ -12,7 +12,7 @@ if [ "$1" = "build" ]; then
 
 elif [ "$1" = "package" ]; then
   cd $HOME_DIR/lambdas/authFunction && zip -9rq authFunction.zip .
-  cd $HOME_DIR/lambdas/loadFunction && zip -9rq timeFunction.zip .
+  cd $HOME_DIR/lambdas/loadFunction && zip -9rq loadFunction.zip .
    cd $HOME_DIR/lambdas/getcharsFunction && zip -9rq getcharsFunction.zip .
     cd $HOME_DIR/lambdas/regFunction && zip -9rq regFunction.zip .
      cd $HOME_DIR/lambdas/saveFormFunction && zip -9rq saveFormFunction.zip .
