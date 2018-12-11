@@ -42,7 +42,7 @@ $(document).ready(function($) {
 
         $.ajax({
             type: "POST",
-            url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/authFunction',
+            url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/regFunction',
             data: JSON.stringify({
                 'name': regName,
                 'email': regEmail,
@@ -94,7 +94,7 @@ $(document).ready(function($) {
 
         $.ajax({
             type: "POST",
-            url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/regFunction',
+            url: 'https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/authFunction',
             data: JSON.stringify({
                 'name': authName,
                 'password': authPassword

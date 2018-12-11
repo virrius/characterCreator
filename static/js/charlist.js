@@ -55,8 +55,8 @@ function selectChar(element){
     }),);
     $.ajax({
         /*'http://127.0.0.1:3000/we',*/
-        url:'http://127.0.0.1:3000/we', //"https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
-        type: "POST",
+        url:"https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/timeFunction",
+        type: "GET",
                 data:   {
                         charName: charName,
                         userName: getCookie('userName')

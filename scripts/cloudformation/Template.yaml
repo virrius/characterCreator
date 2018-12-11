@@ -19,18 +19,18 @@ Resources:
           Properties:
             Path: /authFunction
             Method: GET
-  timeFunction:
+  loadFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
       Runtime: nodejs8.10
-      CodeUri: ../../lambdas/timeFunction/timeFunction.zip
+      CodeUri: ../../lambdas/loadFunction/loadFunction.zip
       Events:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: /TimeResource
-            Method: GET
+            Path: /loadFunction
+            Method: POST
   regFunction:
     Type: AWS::Serverless::Function
     Properties:

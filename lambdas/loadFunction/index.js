@@ -1,4 +1,4 @@
-console.log('PostgreSQL GET Function');
+console.log('PostgreSQL Function');
 var pg = require("pg");
 exports.handler = function(event, context,callback) {
     console.log('Received event : ' + JSON.stringify(event) + ' at ' + new Date());
