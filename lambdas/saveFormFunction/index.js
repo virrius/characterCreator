@@ -35,18 +35,19 @@ exports.handler = function(event, context,callback) {
             });
         }
         else {
-            if(obj['oldCharName']!=='undefined') {
+            if(obj['oldCharName']!=='') {
                 let SQL = "DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;";
                 console.log(SQL);
                 try {
                     console.log(obj['oldCharName']);
+                    client.query("BEGIN;");
                     client.query(" DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;",
                         (err, ids) => {
                             console.log("ids=" +ids.rows);
                             console.log(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
                             client.query(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
                             client.query(" DELETE FROM skills WHERE id='" + ids.rows[0]['skills'] + "'; COMMIT;");
-
+                            client.query("END;");
 
                         });
 
