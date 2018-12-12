@@ -39,10 +39,11 @@ exports.handler = function(event, context,callback) {
                 let SQL = "DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;";
                 console.log(SQL);
                 try {
+                    console.log(obj['oldCharName']);
                     client.query("BEGIN; DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills; COMMIT;",
                         (err, ids) => {
-                            console.log(ids.rows);
-
+                            console.log("ids=" +ids.rows);
+                            console.log(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;"):
                             client.query(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
                             client.query(" DELETE FROM skills WHERE id='" + ids.rows[1]['skills'] + "'; COMMIT;");
 
