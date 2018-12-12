@@ -40,7 +40,7 @@ exports.handler = function(event, context,callback) {
                 console.log(SQL);
                 try {
                     console.log(obj['oldCharName']);
-                    client.query("BEGIN; DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills; COMMIT;",
+                    client.query(" DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;",
                         (err, ids) => {
                             console.log("ids=" +ids.rows);
                             console.log(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
