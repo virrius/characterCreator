@@ -45,7 +45,7 @@ exports.handler = function(event, context,callback) {
                             console.log("ids=" +ids.rows);
                             console.log(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
                             client.query(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
-                            client.query(" DELETE FROM skills WHERE id='" + ids.rows[1]['skills'] + "'; COMMIT;");
+                            client.query(" DELETE FROM skills WHERE id='" + ids.rows[0]['skills'] + "'; COMMIT;");
 
 
                         });
