@@ -69,6 +69,7 @@ exports.handler = function(event, context,callback) {
                     console.log(characteristics.rows);
                     characteristics.rows.forEach(function (item, i, arr) {
                         let column=item['column_name'];
+                        console.log("column " + column+ " " +obj[column]);
                         if(obj[column]!==undefined)
                         {
                             SQLcolumns += column + ", ";
