@@ -38,15 +38,21 @@ exports.handler = function(event, context,callback) {
 
             let SQL="DELETE FROM characters WHERE charname='"+ obj['oldCharName']+"' RETURNING characteristics,skills;";
             console.log(SQL);
-            client.query("BEGIN; DELETE FROM characters WHERE charname='"+ obj['oldCharName']+"' RETURNING characteristics,skills; COMMIT; END;",
-                (err, ids)=>{
-                    console.log(ids.rows);
-                    client.query(" BEGIN; DELETE FROM characteristics WHERE id='"+ ids.rows[0]['characteristics']+"'; COMMIT; END;");
-                    client.query("BEGIN: DELETE FROM skills WHERE id='"+ ids.rows[1]['skills']+"'; COMMIT; END;");
+            try {
+                client.query("BEGIN; DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills; COMMIT;",
+                    (err, ids) => {
+                        console.log(ids.rows);
+
+                        client.query(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
+                        client.query(" DELETE FROM skills WHERE id='" + ids.rows[1]['skills'] + "'; COMMIT;");
 
 
-                });
+                    });
 
+            }catch (e) {
+                client.query("ROLLBACK;");
+                console.log(e);
+            }
 
             var characteristicsID;
             var skillsID;
