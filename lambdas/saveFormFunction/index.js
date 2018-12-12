@@ -35,7 +35,8 @@ exports.handler = function(event, context,callback) {
             });
         }
         else {
-            if(obj['oldCharName']!==undefined) {
+            console.log(obj['oldCharName']==undefined,obj['oldCharName']===undefined,obj['oldCharName']==='undefined');
+            if(obj['oldCharName']!=='undefined') {
                 let SQL = "DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;";
                 console.log(SQL);
                 try {
