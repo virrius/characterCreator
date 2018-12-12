@@ -35,25 +35,25 @@ exports.handler = function(event, context,callback) {
             });
         }
         else {
+            if(obj['oldCharName']!==undefined) {
+                let SQL = "DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;";
+                console.log(SQL);
+                try {
+                    client.query("BEGIN; DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills; COMMIT;",
+                        (err, ids) => {
+                            console.log(ids.rows);
 
-            let SQL="DELETE FROM characters WHERE charname='"+ obj['oldCharName']+"' RETURNING characteristics,skills;";
-            console.log(SQL);
-            try {
-                client.query("BEGIN; DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills; COMMIT;",
-                    (err, ids) => {
-                        console.log(ids.rows);
-
-                        client.query(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
-                        client.query(" DELETE FROM skills WHERE id='" + ids.rows[1]['skills'] + "'; COMMIT;");
+                            client.query(" DELETE FROM characteristics WHERE id='" + ids.rows[0]['characteristics'] + "'; COMMIT;");
+                            client.query(" DELETE FROM skills WHERE id='" + ids.rows[1]['skills'] + "'; COMMIT;");
 
 
-                    });
+                        });
 
-            }catch (e) {
-                client.query("ROLLBACK;");
-                console.log(e);
+                } catch (e) {
+                    client.query("ROLLBACK;");
+                    console.log(e);
+                }
             }
-
             var characteristicsID;
             var skillsID;
             let userName=obj['userName'];
