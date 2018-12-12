@@ -9,12 +9,8 @@ $(document).ready(function($) {
 
     $('#reg').on("click",Registration);
     $('#login').on("click",Authorization);
-    var cookieName=getCookie('userName');
-    var cookiePass=getCookie('userPassword');
-    if(cookieName!==undefined&&cookiePass!==undefined)
-    {
-        Authorization(cookieName,cookiePass);
-    }
+
+        Authorization();
 
 
 
@@ -68,8 +64,9 @@ $(document).ready(function($) {
     }
 
     function Authorization() {
-        let authName=cookieName;
-        let authPassword=cookiePass;
+
+        let authName=getCookie('userName');
+        let authPassword=getCookie('userPassword');
         console.log("auth");
         console.log(authName,authPassword);
         if(authName===undefined) {
@@ -108,6 +105,9 @@ $(document).ready(function($) {
                     document.location = '../html/charlist.html'
                 }
                 else {
+                    console.log('here');
+                    deleteCookie('userName');
+                    deleteCookie('userPassword');
                     error.textContent = res;
                 }
             },

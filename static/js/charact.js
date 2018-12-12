@@ -1,6 +1,12 @@
 
 $(document).ready(function($) {
 
+    let userName=getCookie('userName');
+    if(userName===undefined)
+    {
+        document.location = '../html/auth.html'
+    }
+
     var maxCharsPoints = 5;
     var maxSkillsPoints = 15;
     var characteristics = ["strength","agility","smarts", "vigor", "spirit"];
@@ -90,7 +96,7 @@ function FindBD() {
         /*'http://127.0.0.1:3000/we',*/
         url: "https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
         type: "POST",
-        data: `oldCharName=${oldCharName} &charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
+        data: `oldCharName=${oldCharName}&charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
         dataType: 'text',
         success:function (result){
 
@@ -107,12 +113,13 @@ function FindBD() {
 function loadChar()
 {
 
-    let char=JSON.parse("{"+ sessionStorage.getItem('charjson')+"}");
-    if(char===undefined)
+
+    if(sessionStorage.getItem('charjson')===null)
     {
 
         return;
     }
+    let char=JSON.parse("{"+ sessionStorage.getItem('charjson')+"}");
 
     console.log(char);
     populateForm($('#charForm'),char);
@@ -136,7 +143,7 @@ function resetForm($form)
 function populateForm(form, data) {
     $.each(data, function(key, value) {
 
-        if(value !== null && typeof value === 'object' ) {
+        if(value !==null && typeof value === 'object' ) {
             this.populateForm(form, value);
         }
         else {
@@ -144,7 +151,12 @@ function populateForm(form, data) {
             switch(ctrl.prop("type")) {
                 case "radio": case "checkbox":
                 ctrl.each(function() {
-                    $(this).prop("checked",value);
+                    console.log(this.value,value);
+                    if(value!==0&&(this.value===value.toString()))
+                    {
+                        console.log(this);
+                        $(this).prop("checked",value)
+                    }
                 });
                 break;
                 default:

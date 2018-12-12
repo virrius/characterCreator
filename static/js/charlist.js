@@ -4,7 +4,7 @@ $(document).ready(function($) {
     let userName=getCookie('userName');
     if(userName===undefined)
     {
-        document.location = 'html/auth.html'
+        document.location = '../html/auth.html'
     }
     else {
         document.getElementById("userName").textContent="Hello, "+ userName;
