@@ -55,6 +55,7 @@ exports.handler = function(event, context,callback) {
                     console.log(e);
                 }
             }
+            console.log("Im here!");
             var characteristicsID;
             var skillsID;
             let userName=obj['userName'];
@@ -75,6 +76,7 @@ exports.handler = function(event, context,callback) {
                     });
                     SQLcolumns=SQLcolumns.slice(0,-2);
                     SQLvalues=SQLvalues.slice(0,-2);
+                    console.log("ERROR?",SQLvalues);
                     console.log(SQLcolumns, SQLvalues);
                     let SQL2="INSERT INTO characteristics("+SQLcolumns+") VALUES("+SQLvalues+") RETURNING id;";
                     console.log(SQL2);
