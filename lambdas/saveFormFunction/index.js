@@ -35,7 +35,6 @@ exports.handler = function(event, context,callback) {
             });
         }
         else {
-            console.log(obj['oldCharName']==undefined,obj['oldCharName']===undefined,obj['oldCharName']==='undefined', obj['oldCharName']);
             if(obj['oldCharName']!=='undefined') {
                 let SQL = "DELETE FROM characters WHERE charname='" + obj['oldCharName'] + "' RETURNING characteristics,skills;";
                 console.log(SQL);
@@ -66,6 +65,7 @@ exports.handler = function(event, context,callback) {
                 (err, characteristics) => {
                     let SQLcolumns="";
                     let SQLvalues="";
+                    console.log(characteristics.rows);
                     characteristics.rows.forEach(function (item, i, arr) {
                         let column=item['column_name'];
                         if(obj[column]!==undefined)
@@ -76,7 +76,7 @@ exports.handler = function(event, context,callback) {
                     });
                     SQLcolumns=SQLcolumns.slice(0,-2);
                     SQLvalues=SQLvalues.slice(0,-2);
-                    console.log("ERROR?",SQLvalues);
+                    console.log("ERROR?",SQLcolumns);
                     console.log(SQLcolumns, SQLvalues);
                     let SQL2="INSERT INTO characteristics("+SQLcolumns+") VALUES("+SQLvalues+") RETURNING id;";
                     console.log(SQL2);
