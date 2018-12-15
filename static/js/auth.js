@@ -16,6 +16,7 @@ $(document).ready(function($) {
 
 
     function Registration() {
+        event.preventDefault();
         console.log("reg");
         let regName = $("#regName").val();
         let regEmail = $("#regEmail").val();
@@ -63,8 +64,8 @@ $(document).ready(function($) {
 
     }
 
-    function Authorization() {
-
+    function Authorization(event) {
+        event.preventDefault();
         let authName=getCookie('userName');
         let authPassword=getCookie('userPassword');
         console.log("auth");
