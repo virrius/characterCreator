@@ -2,38 +2,50 @@ $('.message a').click(function(){
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
 $(document).ready(function($) {
-    var nameRegex = /^[a-zA-Z][a-zA-Z0-9-_\.]{3,50}$/;
+    var nameRegex = /^[a-zA-Z][a-zA-Z0-9-_\.]{2,50}$/;
     var emailRegex = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
     var error = document.getElementById("error");
 
-    $('#reg').on("click",Registration);
-    $('#login').on("click",Authorization);
+    $('#reg').on("submit",Registration);
+    $('#login').on("submit",Authorization);
+    $(':input').each(function (i,item) {
+        console.log(item);
+        item.oninput=clearError;
+    });
+    Authorization();
+    clearError();
 
-        Authorization();
 
 
 
 
+    function clearError() {
+
+        error.innerText="";
+    }
+
+    /**
+     * @return {boolean}
+     */
     function Registration() {
-        event.preventDefault();
+
         console.log("reg");
         let regName = $("#regName").val();
         let regEmail = $("#regEmail").val();
         let regPassword = $("#regPassword").val();
         console.log(regName,regEmail,regPassword);
         if (!nameRegex.test(regName)) {
-            error.textContent = "Неверное имя. Имя должно состоять из: [a-z][A-Z][0-9] 3-50 символов";
-            return;
+            error.textContent = "Неверное имя. Имя должно начинаться с буквы и состоять из: [a-z][A-Z][0-9] 3-50 символов";
+            return false;
         }
-        console.log(regPassword.length);
         if (!(passwordRegex.test(regPassword)) || regPassword.length < 7) {
             error.textContent = "Неверный пароль. Пароль должен содержать комбинацию из: [a-z][A-Z][0-9] 7+ символов";
-            return;
+            return false;
         }
         if (!emailRegex.test(regEmail)) {
             error.textContent = "Неверный адрес почты";
-            return;
+            return false;
         }
 
 
@@ -60,12 +72,17 @@ $(document).ready(function($) {
             error: function (error) {
                 console.log('Error.' + error);
             }
+
         });
+        return false;
 
     }
 
-    function Authorization(event) {
-        event.preventDefault();
+    /**
+     * @return {boolean}
+     */
+    function Authorization() {
+
         let authName=getCookie('userName');
         let authPassword=getCookie('userPassword');
         console.log("auth");
@@ -75,15 +92,15 @@ $(document).ready(function($) {
             console.log(authName);
             if (!nameRegex.test(authName)) {
 
-                error.textContent = "Неверное имя. Имя должно состоять из: [a-z][A-Z][0-9] 3-50 символов";
-                return;
+                error.textContent = "Неверное имя. Имя должно начинаться с буквы и состоять из: [a-z][A-Z][0-9] 3-50 символов";
+                return false;
             }
         }
         if(authPassword===undefined) {
             authPassword = $("#authPassword").val();
             if (!(passwordRegex.test(authPassword)) || authPassword.length < 7) {
                 error.textContent = "Неверный пароль. Пароль должен содержать комбинацию из: [a-z][A-Z][0-9] 7+ символов";
-                return;
+                return false
             }
         }
         console.log(authName,authPassword);
@@ -104,6 +121,7 @@ $(document).ready(function($) {
                     setCookie('userName',authName);
                     setCookie('userPassword',authPassword);
                     document.location = '../html/charlist.html'
+                    return false
                 }
                 else {
                     console.log('here');
@@ -116,5 +134,6 @@ $(document).ready(function($) {
                 console.log('Error.' + error);
             }
         });
+        return false
     }
 });

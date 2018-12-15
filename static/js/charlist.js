@@ -7,7 +7,7 @@ $(document).ready(function($) {
         document.location = '../html/auth.html'
     }
     else {
-        document.getElementById("userName").textContent="Hello, "+ userName;
+        document.getElementById("userName").textContent="Привет, "+ userName;
         let table=document.getElementById('table');
         $.ajax({
             type: "POST",
@@ -41,6 +41,13 @@ $(document).ready(function($) {
     }
 
 });
+
+function unlogin() {
+
+        deleteCookie('userName');
+        deleteCookie('userPassword');
+        document.location="../html/auth.html"
+}
 
 function newChar() {
     document.location='../html/character.html';
