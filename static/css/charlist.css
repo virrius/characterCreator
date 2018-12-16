@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+body {
+    background: #848484;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+
+}
+
+#top{
+    height: 30px;
+    background-color: #c0c0c0;
+    text-align: right;
+    vertical-align: middle;
+
+}
+#top  button{
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    margin-right: 5px;
+    background-color: #780202;
+
+
+}
+#top button:hover{
+    background-color: #5f0202;
+}
+
+#table{
+
+    margin: 20px;
+}
+
+.row{
+    margin: 5px;
+    line-height: 60px;
+    vertical-align: center;
+    background-color: rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+
+}
+.col-3 {
+    border: solid;
+    border-color: goldenrod;
+    border-radius: 8px;
+
+}
+.col-3:hover{
+    background-color: rgba(196, 142, 32, 0.4);
+    transition: all .2s cubic-bezier(.6,0,.4,1);
+    border-color: gold;
+    cursor: pointer;
+}
+
+.col-3:hover ~ .col-9{
+    background-color: rgba(196, 142, 32, 0.11);
+    transition: all .2s cubic-bezier(.6,0,.4,1);
+}
+
+.col-left {
+    margin-right: auto;
+}
+
+.display-inline {
+    display: inline;
+}
+
+#NewChar{
+    background: #747474;
+    border: solid;
+    border-radius: 8px;
+    border-color: darkgoldenrod;
+    cursor: pointer;
+    color: white;
+    font-size: 27px;
+    height: 60px;
+    width: 25%;
+    margin: 5px 5px 10px;
+    overflow: hidden;
+    transition: all .3s cubic-bezier(.6,0,.4,1);
+}
+
+#NewChar:hover{
+    background: #515151;
+    border-color: gold;
+}
+

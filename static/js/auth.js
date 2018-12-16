@@ -7,10 +7,9 @@ $(document).ready(function($) {
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
     var error = document.getElementById("error");
 
-    $('#reg').on("submit",Registration);
-    $('#login').on("submit",Authorization);
+    $('#reg').on("click",Registration);
+    $('#login').on("click",Authorization);
     $(':input').each(function (i,item) {
-        console.log(item);
         item.oninput=clearError;
     });
     Authorization();
@@ -93,6 +92,7 @@ $(document).ready(function($) {
             if (!nameRegex.test(authName)) {
 
                 error.textContent = "Неверное имя. Имя должно начинаться с буквы и состоять из: [a-z][A-Z][0-9] 3-50 символов";
+
                 return false;
             }
         }
@@ -120,7 +120,7 @@ $(document).ready(function($) {
                 if (res === "success") {
                     setCookie('userName',authName);
                     setCookie('userPassword',authPassword);
-                    document.location = '../html/charlist.html'
+                    document.location = '../html/charlist.html';
                     return false
                 }
                 else {

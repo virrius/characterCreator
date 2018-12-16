@@ -9,24 +9,36 @@
     <script src="../js/auth.js"></script>
 </head>
 <body>
-<div class="login-page">
 
-    <div class="form" id="reg">
-        <div id="error">ERROR</div>
-        <form class="register-form" id="register">
-            <input id="regName" type="text" placeholder="name"/>
-            <input id="regPassword" type="password" placeholder="password"/>
-            <input id="regEmail" type="email" placeholder="email address"/>
-            <button >create</button>
-            <p class="message">Already registered? <a href="#1">Sign In</a></p>
-        </form>
 
-        <form class="login-form" id="login" >
-            <input id="authName" type="text" placeholder="username"/>
-            <input id="authPassword" type="password" placeholder="password"/>
-            <button type="submit" >login</button>
-            <p class="message">Not registered? <a href="#2">Create an account</a></p>
-        </form>
+
+    <div class="form">
+
+
+        <div class="register-form">
+            <div id="error">ERROR</div>
+            <input checked="" id="signin" name="action" type="radio" value="signin">
+            <label for="signin">Sign in</label>
+            <input id="signup" name="action" type="radio" value="signup">
+            <label for="signup">Sign up</label>
+
+            <div id="wrapper">
+                <div id="arrow"></div>
+            </div>
+            <div id="login-form">
+                <input id="authName" type="text" placeholder="username"/>
+                <input id="authPassword" type="password" placeholder="password"/>
+                <button id="login" >login</button>
+            </div>
+            <div id="reg-form">
+                <input id="regName" type="text" placeholder="name"/>
+                <input id="regPassword" type="password" placeholder="password"/>
+                <input id="regEmail" type="email" placeholder="email address"/>
+                <button id="reg" >create</button>
+            </div>
+
+
+
 
     </div>
 </div>

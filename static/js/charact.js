@@ -27,9 +27,11 @@ $(document).ready(function($) {
         let sum = 0;
         for(let i=0; i<characteristics.length; ++i)
         {
+
             let val=parseInt($(":radio[name="+characteristics[i]+"]").filter(":checked").val());
             sum =sum+val;
             characteristicValues[i]=val;
+            document.getElementById(characteristics[i]).innerText=setDice(val,true);
             if(i===characteristics.indexOf("vigor")){
                 document.getElementById("toughness").innerText=4+val;
             }
@@ -66,7 +68,8 @@ $(document).ready(function($) {
             document.getElementById("error").textContent="";
     }
 
-    function setDice(point) {
+    function setDice(point,chars=false) {
+        if(chars) point+=1;
         let Dices = ['--', 'd4', 'd6', 'd8', 'd10', 'd12'];
 
         return Dices[point];
@@ -80,6 +83,10 @@ var oldCharName;
 function FindBD() {
     let charname=$('#charname').val();
     let chardesc=$("#chardescription").val();
+    if(charname==="")
+    {
+        return;
+    }
     var data = `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`.split("&");
     console.log(data);
     var obj={};

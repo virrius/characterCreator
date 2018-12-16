@@ -1,0 +1,157 @@
+body {
+    background: #848484;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+input[type="radio"]{
+    display:none;
+}
+
+input[type="radio"]:checked ~ input[type="radio"] + label.radio-5{
+    background: url("../assets/5a.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+
+
+    display:inline-block;
+    padding: 0 0 0 0;
+}
+
+input[type="radio"]:checked ~ input[type="radio"] + label.radio-4{
+    background: url("../assets/4a.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+
+
+    display:inline-block;
+    padding: 0 0 0 0;
+}
+
+input[type="radio"]:checked ~ input[type="radio"] + label.radio-3{
+    background: url("../assets/3a.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+    display:inline-block;
+    padding: 0 0 0 0;
+}
+
+
+
+input[type="radio"]:checked ~ input[type="radio"] + label.radio-2{
+    background: url("../assets/2a.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+}
+
+input[type="radio"]:checked ~ input[type="radio"] + label.radio-1{
+    background: url("../assets/1a.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+
+
+}
+
+
+
+.radio-0{
+    background: url("../assets/2r.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+
+    display:inline-block;
+    padding: 0 0 0 0;
+}
+
+.radio-1{
+     background: url("../assets/1g.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+    margin-left: -30px;
+    display:inline-block;
+     padding: 0 0 0 0;
+
+ }
+.radio-2{
+    background: url("../assets/2g.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+
+
+    display:inline-block;
+    padding: 0 0 0 0;
+    margin-left: -30px;
+}
+.radio-3{
+    background: url("../assets/3g.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+
+    display:inline-block;
+    padding: 0 0 0 0;
+    margin-left: -25px;
+}
+
+.radio-4{
+    background: url("../assets/4g.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+    display:inline-block;
+    padding: 0 0 0 0;
+    margin-left: -30px;
+}
+.radio-5{
+    background: url("../assets/5g.png");
+    background-size: 4rem;
+    height: 55px;
+    width: 60px;
+    display:inline-block;
+    padding: 0 0 0 0;
+    margin-left: -30px;
+}
+
+#skills input[type="radio"] + label {
+    transform: scale(1);
+}
+
+span{
+
+    line-height: normal;
+    vertical-align: top;
+    font-size: 25px;
+
+
+}
+
+.col-6{
+    border: solid;
+    border-radius: 8px;
+    border-color: gold;
+}
+
+
+
+.skill {
+    display: flex;
+    align-items: center;
+}
+
+.skill:hover{
+    background-color: rgba(248, 245, 250, 0.37);
+}
+
+.skill div{
+    width: 45%
+}

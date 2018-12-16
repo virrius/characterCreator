@@ -46,6 +46,7 @@ function unlogin() {
 
         deleteCookie('userName');
         deleteCookie('userPassword');
+     console.log(getCookie('userName'));
         document.location="../html/auth.html"
 }
 

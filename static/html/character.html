@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="../js/charact.js"></script>
     <script src="../js/cookies.js"></script>
+    <link rel="stylesheet" href="../css/character.css">
 
 </head>
 <body>
@@ -23,35 +24,75 @@
                     <div id="characteristics">
                         <b><p>Выберите ваши характеристики</p></b>
                         <h3>Сила</h3>
-                        <input type="radio" name="strength" value="0" checked> d4
-                        <input type="radio" name="strength" value="1" > d6
-                        <input type="radio" name="strength" value="2"> d8
-                        <input type="radio" name="strength" value="3" > d10
-                        <input type="radio" name="strength" value="4" > d12
+                        <div>
+                            <input type="radio" id=strength-1 name="strength" value="0" checked>
+                            <label class="radio-1" for="strength-1"></label>
+                            <input type="radio" id=strength-2 name="strength" value="1" >
+                            <label class="radio-2" for="strength-2"></label>
+                            <input type="radio" id=strength-3 name="strength" value="2">
+                            <label class="radio-3" for="strength-3"></label>
+                            <input type="radio" id=strength-4 name="strength" value="3" >
+                            <label class="radio-4" for="strength-4"></label>
+                            <input type="radio" id=strength-5 name="strength" value="4" >
+                            <label class="radio-5" for="strength-5"></label>
+                            <span id="strength">--</span>
+                        </div>
                         <h3>Ловкость</h3>
-                        <input type="radio" name="agility" value="0" checked> d4
-                        <input type="radio" name="agility" value="1" > d6
-                        <input type="radio" name="agility" value="2"> d8
-                        <input type="radio" name="agility" value="3" > d10
-                        <input type="radio" name="agility" value="4" > d12
+                        <div>
+                            <input type="radio" id=agility-1 name="agility" value="0" checked>
+                            <label class="radio-1" for="agility-1"></label>
+                            <input type="radio" id=agility-2 name="agility" value="1" >
+                            <label class="radio-2" for="agility-2"></label>
+                            <input type="radio" id=agility-3 name="agility" value="2">
+                            <label class="radio-3" for="agility-3"></label>
+                            <input type="radio" id=agility-4 name="agility" value="3" >
+                            <label class="radio-4" for="agility-4"></label>
+                            <input type="radio" id=agility-5 name="agility" value="4" >
+                            <label class="radio-5" for="agility-5"></label>
+                            <span id="agility">--</span>
+                        </div>
                         <h3>Смекалка</h3>
-                        <input type="radio" name="smarts" value="0" checked> d4
-                        <input type="radio" name="smarts" value="1" > d6
-                        <input type="radio" name="smarts" value="2"> d8
-                        <input type="radio" name="smarts" value="3" > d10
-                        <input type="radio" name="smarts" value="4" > d12
+                        <div>
+                            <input type="radio" id=smarts-1 name="smarts" value="0" checked>
+                            <label class="radio-1" for="smarts-1"></label>
+                            <input type="radio" id=smarts-2 name="smarts" value="1" >
+                            <label class="radio-2" for="smarts-2"></label>
+                            <input type="radio" id=smarts-3 name="smarts" value="2">
+                            <label class="radio-3" for="smarts-3"></label>
+                            <input type="radio" id=smarts-4 name="smarts" value="3" >
+                            <label class="radio-4" for="smarts-4"></label>
+                            <input type="radio" id=smarts-5 name="smarts" value="4" >
+                            <label class="radio-5" for="smarts-5"></label>
+                            <span id="smarts">--</span>
+                        </div>
                         <h3>Характер</h3>
-                        <input type="radio" name="spirit" value="0" checked> d4
-                        <input type="radio" name="spirit" value="1" > d6
-                        <input type="radio" name="spirit" value="2"> d8
-                        <input type="radio" name="spirit" value="3" > d10
-                        <input type="radio" name="spirit" value="4" > d12
+                        <div>
+                            <input type="radio" id=spirit-1 name="spirit" value="0" checked>
+                            <label class="radio-1" for="spirit-1"></label>
+                            <input type="radio" id=spirit-2 name="spirit" value="1" >
+                            <label class="radio-2" for="spirit-2"></label>
+                            <input type="radio" id=spirit-3 name="spirit" value="2">
+                            <label class="radio-3" for="spirit-3"></label>
+                            <input type="radio" id=spirit-4 name="spirit" value="3" >
+                            <label class="radio-4" for="spirit-4"></label>
+                            <input type="radio" id=spirit-5 name="spirit" value="4" >
+                            <label class="radio-5" for="spirit-5"></label>
+                            <span id="spirit">--</span>
+                        </div>
                         <h3>Выносливость</h3>
-                        <input type="radio" name="vigor" value="0" checked> d4
-                        <input type="radio" name="vigor" value="1" > d6
-                        <input type="radio" name="vigor" value="2"> d8
-                        <input type="radio" name="vigor" value="3" > d10
-                        <input type="radio" name="vigor" value="4" > d12
+                        <div>
+                            <input type="radio" id=vigor-1 name="vigor" value="0" checked>
+                            <label class="radio-1" for="vigor-1"></label>
+                            <input type="radio" id=vigor-2 name="vigor" value="1" >
+                            <label class="radio-2" for="vigor-2"></label>
+                            <input type="radio" id=vigor-3 name="vigor" value="2">
+                            <label class="radio-3" for="vigor-3"></label>
+                            <input type="radio" id=vigor-4 name="vigor" value="3" >
+                            <label class="radio-4" for="vigor-4"></label>
+                            <input type="radio" id=vigor-5 name="vigor" value="4" >
+                            <label class="radio-5" for="vigor-5"></label>
+                            <span id="vigor">--</span>
+                        </div>
                     </div>
                     <div id="error"></div>
                 </div>
@@ -65,253 +106,388 @@
                 </div>
             </div>
             <!--Skills -->
-            <div id="skills">
+            <div>
                 <div class="row">
                     <div id="agility-skills" class="col-6">
-                        <h5>Ловкость</h5>
-                        <div>
-                            Верховая езда
-                            <input class="display-inline" type="radio" name="riding" value="0" checked>
-                            <input class="display-inline" type="radio" name="riding" value="1" >
-                            <input class="display-inline" type="radio" name="riding" value="2">
-                            <input class="display-inline" type="radio" name="riding" value="3" >
-                            <input class="display-inline" type="radio" name="riding" value="4" >
-                            <input class="display-inline" type="radio" name="riding" value="5" >
+                        <h2>Ловкость</h2>
+                        <div class="skill">
+                            <div>Верховая езда</div>
+                            <input type="radio" id=riding-0 name="riding" value="0" checked>
+                            <label class="radio-0" for="riding-0"></label>
+                            <input type="radio" id=riding-1 name="riding" value="1" >
+                            <label class="radio-1" for="riding-1"></label>
+                            <input type="radio" id=riding-2 name="riding" value="2" >
+                            <label class="radio-2" for="riding-2"></label>
+                            <input type="radio" id=riding-3 name="riding" value="3">
+                            <label class="radio-3" for="riding-3"></label>
+                            <input type="radio" id=riding-4 name="riding" value="4" >
+                            <label class="radio-4" for="riding-4"></label>
+                            <input type="radio" id=riding-5 name="riding" value="5" >
+                            <label class="radio-5" for="riding-5"></label>
                             <span id="riding">--</span>
                         </div>
-                        <div>
-                            Взлом
-                            <input class="display-inline" type="radio" name="lockpicking" value="0" checked>
-                            <input class="display-inline" type="radio" name="lockpicking" value="1" >
-                            <input class="display-inline" type="radio" name="lockpicking" value="2">
-                            <input class="display-inline" type="radio" name="lockpicking" value="3" >
-                            <input class="display-inline" type="radio" name="lockpicking" value="4" >
-                            <input class="display-inline" type="radio" name="lockpicking" value="5" >
+                        <div class="skill">
+                            <div>Взлом</div>
+                            <input type="radio" id=lockpicking-0 name="lockpicking" value="0" checked>
+                            <label class="radio-0" for="lockpicking-0"></label>
+                            <input type="radio" id=lockpicking-1 name="lockpicking" value="1" >
+                            <label class="radio-1" for="lockpicking-1"></label>
+                            <input type="radio" id=lockpicking-2 name="lockpicking" value="2" >
+                            <label class="radio-2" for="lockpicking-2"></label>
+                            <input type="radio" id=lockpicking-3 name="lockpicking" value="3">
+                            <label class="radio-3" for="lockpicking-3"></label>
+                            <input type="radio" id=lockpicking-4 name="lockpicking" value="4" >
+                            <label class="radio-4" for="lockpicking-4"></label>
+                            <input type="radio" id=lockpicking-5 name="lockpicking" value="5" >
+                            <label class="radio-5" for="lockpicking-5"></label>
                             <span id="lockpicking">--</span>
                         </div>
-                        <div>
-                            Вождение
-                            <input class="display-inline" type="radio" name="driving" value="0" checked>
-                            <input class="display-inline" type="radio" name="driving" value="1" >
-                            <input class="display-inline" type="radio" name="driving" value="2">
-                            <input class="display-inline" type="radio" name="driving" value="3" >
-                            <input class="display-inline" type="radio" name="driving" value="4" >
-                            <input class="display-inline" type="radio" name="driving" value="5" >
+                        <div class="skill">
+                            <div>Вождение</div>
+                            <input type="radio" id=driving-0 name="driving" value="0" checked>
+                            <label class="radio-0" for="driving-0"></label>
+                            <input type="radio" id=driving-1 name="driving" value="1" >
+                            <label class="radio-1" for="driving-1"></label>
+                            <input type="radio" id=driving-2 name="driving" value="2" >
+                            <label class="radio-2" for="driving-2"></label>
+                            <input type="radio" id=driving-3 name="driving" value="3">
+                            <label class="radio-3" for="driving-3"></label>
+                            <input type="radio" id=driving-4 name="driving" value="4" >
+                            <label class="radio-4" for="driving-4"></label>
+                            <input type="radio" id=driving-5 name="driving" value="5" >
+                            <label class="radio-5" for="driving-5"></label>
                             <span id="driving">--</span>
                         </div>
-                        <div>
-                            Драка
-                            <input class="display-inline" type="radio" name="fighting" value="0" checked>
-                            <input class="display-inline" type="radio" name="fighting" value="1" >
-                            <input class="display-inline" type="radio" name="fighting" value="2">
-                            <input class="display-inline" type="radio" name="fighting" value="3" >
-                            <input class="display-inline" type="radio" name="fighting" value="4" >
-                            <input class="display-inline" type="radio" name="fighting" value="5" >
+                        <div class="skill">
+                            <div>Драка</div>
+                            <input type="radio" id=fighting-0 name="fighting" value="0" checked>
+                            <label class="radio-0" for="fighting-0"></label>
+                            <input type="radio" id=fighting-1 name="fighting" value="1" >
+                            <label class="radio-1" for="fighting-1"></label>
+                            <input type="radio" id=fighting-2 name="fighting" value="2" >
+                            <label class="radio-2" for="fighting-2"></label>
+                            <input type="radio" id=fighting-3 name="fighting" value="3">
+                            <label class="radio-3" for="fighting-3"></label>
+                            <input type="radio" id=fighting-4 name="fighting" value="4" >
+                            <label class="radio-4" for="fighting-4"></label>
+                            <input type="radio" id=fighting-5 name="fighting" value="5" >
+                            <label class="radio-5" for="fighting-5"></label>
                             <span id="fighting">--</span>
 
                         </div>
-                        <div>
-                            Маскировка
-                            <input class="display-inline" type="radio" name="stealth" value="0" checked>
-                            <input class="display-inline" type="radio" name="stealth" value="1" >
-                            <input class="display-inline" type="radio" name="stealth" value="2">
-                            <input class="display-inline" type="radio" name="stealth" value="3" >
-                            <input class="display-inline" type="radio" name="stealth" value="4" >
-                            <input class="display-inline" type="radio" name="stealth" value="5" >
+                        <div class="skill">
+                            <div>Маскировка</div>
+                            <input type="radio" id=stealth-0 name="stealth" value="0" checked>
+                            <label class="radio-0" for="stealth-0"></label>
+                            <input type="radio" id=stealth-1 name="stealth" value="1" >
+                            <label class="radio-1" for="stealth-1"></label>
+                            <input type="radio" id=stealth-2 name="stealth" value="2" >
+                            <label class="radio-2" for="stealth-2"></label>
+                            <input type="radio" id=stealth-3 name="stealth" value="3">
+                            <label class="radio-3" for="stealth-3"></label>
+                            <input type="radio" id=stealth-4 name="stealth" value="4" >
+                            <label class="radio-4" for="stealth-4"></label>
+                            <input type="radio" id=stealth-5 name="stealth" value="5" >
+                            <label class="radio-5" for="stealth-5"></label>
                             <span id="stealth">--</span>
 
                         </div>
-                        <div>
-                            Метание
-                            <input class="display-inline" type="radio" name="throwing" value="0" checked>
-                            <input class="display-inline" type="radio" name="throwing" value="1" >
-                            <input class="display-inline" type="radio" name="throwing" value="2">
-                            <input class="display-inline" type="radio" name="throwing" value="3" >
-                            <input class="display-inline" type="radio" name="throwing" value="4" >
-                            <input class="display-inline" type="radio" name="throwing" value="5" >
+                        <div class="skill">
+                            <div>Метание</div>
+                            <input type="radio" id=throwing-0 name="throwing" value="0" checked>
+                            <label class="radio-0" for="throwing-0"></label>
+                            <input type="radio" id=throwing-1 name="throwing" value="1" >
+                            <label class="radio-1" for="throwing-1"></label>
+                            <input type="radio" id=throwing-2 name="throwing" value="2" >
+                            <label class="radio-2" for="throwing-2"></label>
+                            <input type="radio" id=throwing-3 name="throwing" value="3">
+                            <label class="radio-3" for="throwing-3"></label>
+                            <input type="radio" id=throwing-4 name="throwing" value="4" >
+                            <label class="radio-4" for="throwing-4"></label>
+                            <input type="radio" id=throwing-5 name="throwing" value="5" >
+                            <label class="radio-5" for="throwing-5"></label>
                             <span id="throwing">--</span>
 
                         </div>
-                        <div>
-                            Пилотирование
-                            <input class="display-inline" type="radio" name="piloting" value="0" checked>
-                            <input class="display-inline" type="radio" name="piloting" value="1" >
-                            <input class="display-inline" type="radio" name="piloting" value="2">
-                            <input class="display-inline" type="radio" name="piloting" value="3" >
-                            <input class="display-inline" type="radio" name="piloting" value="4" >
-                            <input class="display-inline" type="radio" name="piloting" value="5" >
+                        <div class="skill">
+                           <div> Пилотирование</div>
+                            <input type="radio" id=piloting-0 name="piloting" value="0" checked>
+                            <label class="radio-0" for="piloting-0"></label>
+                            <input type="radio" id=piloting-1 name="piloting" value="1" >
+                            <label class="radio-1" for="piloting-1"></label>
+                            <input type="radio" id=piloting-2 name="piloting" value="2" >
+                            <label class="radio-2" for="piloting-2"></label>
+                            <input type="radio" id=piloting-3 name="piloting" value="3">
+                            <label class="radio-3" for="piloting-3"></label>
+                            <input type="radio" id=piloting-4 name="piloting" value="4" >
+                            <label class="radio-4" for="piloting-4"></label>
+                            <input type="radio" id=piloting-5 name="piloting" value="5" >
+                            <label class="radio-5" for="piloting-5"></label>
                             <span id="piloting">--</span>
                         </div>
-                        <div>
-                            Плавание
-                            <input class="display-inline" type="radio" name="swimming" value="0" checked>
-                            <input class="display-inline" type="radio" name="swimming" value="1" >
-                            <input class="display-inline" type="radio" name="swimming" value="2">
-                            <input class="display-inline" type="radio" name="swimming" value="3" >
-                            <input class="display-inline" type="radio" name="swimming" value="4" >
-                            <input class="display-inline" type="radio" name="swimming" value="5" >
+                        <div class="skill">
+                            <div>Плавание</div>
+                            <input type="radio" id=swimming-0 name="swimming" value="0" checked>
+                            <label class="radio-0" for="swimming-0"></label>
+                            <input type="radio" id=swimming-1 name="swimming" value="1" >
+                            <label class="radio-1" for="swimming-1"></label>
+                            <input type="radio" id=swimming-2 name="swimming" value="2" >
+                            <label class="radio-2" for="swimming-2"></label>
+                            <input type="radio" id=swimming-3 name="swimming" value="3">
+                            <label class="radio-3" for="swimming-3"></label>
+                            <input type="radio" id=swimming-4 name="swimming" value="4" >
+                            <label class="radio-4" for="swimming-4"></label>
+                            <input type="radio" id=swimming-5 name="swimming" value="5" >
+                            <label class="radio-5" for="swimming-5"></label>
                             <span id="swimming">--</span>
                         </div>
-                        <div>
-                            Стрельба
-                            <input class="display-inline" type="radio" name="shooting" value="0" checked>
-                            <input class="display-inline" type="radio" name="shooting" value="1" >
-                            <input class="display-inline" type="radio" name="shooting" value="2">
-                            <input class="display-inline" type="radio" name="shooting" value="3" >
-                            <input class="display-inline" type="radio" name="shooting" value="4" >
-                            <input class="display-inline" type="radio" name="shooting" value="5" >
+                        <div class="skill">
+                            <div>Стрельба</div>
+                            <input type="radio" id=shooting-0 name="shooting" value="0" checked>
+                            <label class="radio-0" for="shooting-0"></label>
+                            <input type="radio" id=shooting-1 name="shooting" value="1" >
+                            <label class="radio-1" for="shooting-1"></label>
+                            <input type="radio" id=shooting-2 name="shooting" value="2" >
+                            <label class="radio-2" for="shooting-2"></label>
+                            <input type="radio" id=shooting-3 name="shooting" value="3">
+                            <label class="radio-3" for="shooting-3"></label>
+                            <input type="radio" id=shooting-4 name="shooting" value="4" >
+                            <label class="radio-4" for="shooting-4"></label>
+                            <input type="radio" id=shooting-5 name="shooting" value="5" >
+                            <label class="radio-5" for="shooting-5"></label>
                             <span id="shooting">--</span>
                         </div>
-                        <div>
-                            Судовождение
-                            <input class="display-inline" type="radio" name="boating" value="0" checked>
-                            <input class="display-inline" type="radio" name="boating" value="1" >
-                            <input class="display-inline" type="radio" name="boating" value="2" >
-                            <input class="display-inline" type="radio" name="boating" value="3" >
-                            <input class="display-inline" type="radio" name="boating" value="4" >
-                            <input class="display-inline" type="radio" name="boating" value="5" >
+                        <div class="skill">
+                            <div>Судовождение</div>
+                            <input type="radio" id=boating-0 name="boating" value="0" checked>
+                            <label class="radio-0" for="boating-0"></label>
+                            <input type="radio" id=boating-1 name="boating" value="1" >
+                            <label class="radio-1" for="boating-1"></label>
+                            <input type="radio" id=boating-2 name="boating" value="2" >
+                            <label class="radio-2" for="boating-2"></label>
+                            <input type="radio" id=boating-3 name="boating" value="3">
+                            <label class="radio-3" for="boating-3"></label>
+                            <input type="radio" id=boating-4 name="boating" value="4" >
+                            <label class="radio-4" for="boating-4"></label>
+                            <input type="radio" id=boating-5 name="boating" value="5" >
+                            <label class="radio-5" for="boating-5"></label>
                             <span id="boating">--</span>
                         </div>
 
                     </div>
                     <div id="smarts-skills" class="col-6">
-                        <h5>Смекалка</h5>
-                        <div>
-                            Азартные игры
-                            <input class="display-inline" type="radio" name="gambling" value="0" checked>
-                            <input class="display-inline" type="radio" name="gambling" value="1" >
-                            <input class="display-inline" type="radio" name="gambling" value="2" >
-                            <input class="display-inline" type="radio" name="gambling" value="3" >
-                            <input class="display-inline" type="radio" name="gambling" value="4" >
-                            <input class="display-inline" type="radio" name="gambling" value="5" >
+                        <h2>Смекалка</h2>
+                        <div class="skill">
+                            <div>Азартные игры</div>
+                            <input type="radio" id=gambling-0 name="gambling" value="0" checked>
+                            <label class="radio-0" for="gambling-0"></label>
+                            <input type="radio" id=gambling-1 name="gambling" value="1" >
+                            <label class="radio-1" for="gambling-1"></label>
+                            <input type="radio" id=gambling-2 name="gambling" value="2" >
+                            <label class="radio-2" for="gambling-2"></label>
+                            <input type="radio" id=gambling-3 name="gambling" value="3">
+                            <label class="radio-3" for="gambling-3"></label>
+                            <input type="radio" id=gambling-4 name="gambling" value="4" >
+                            <label class="radio-4" for="gambling-4"></label>
+                            <input type="radio" id=gambling-5 name="gambling" value="5" >
+                            <label class="radio-5" for="gambling-5"></label>
                             <span id="gambling">--</span>
                         </div>
-                        <div>
-                            Внимание
-                            <input class="display-inline" type="radio" name="notice" value="0" checked>
-                            <input class="display-inline" type="radio" name="notice" value="1" >
-                            <input class="display-inline" type="radio" name="notice" value="2" >
-                            <input class="display-inline" type="radio" name="notice" value="3" >
-                            <input class="display-inline" type="radio" name="notice" value="4" >
-                            <input class="display-inline" type="radio" name="notice" value="5" >
+                        <div class="skill">
+                           <div>Внимание</div>
+                            <input type="radio" id=notice-0 name="notice" value="0" checked>
+                            <label class="radio-0" for="notice-0"></label>
+                            <input type="radio" id=notice-1 name="notice" value="1" >
+                            <label class="radio-1" for="notice-1"></label>
+                            <input type="radio" id=notice-2 name="notice" value="2" >
+                            <label class="radio-2" for="notice-2"></label>
+                            <input type="radio" id=notice-3 name="notice" value="3">
+                            <label class="radio-3" for="notice-3"></label>
+                            <input type="radio" id=notice-4 name="notice" value="4" >
+                            <label class="radio-4" for="notice-4"></label>
+                            <input type="radio" id=notice-5 name="notice" value="5" >
+                            <label class="radio-5" for="notice-5"></label>
                             <span id="notice">--</span>
                         </div>
-                        <div>
-                            Выживание
-                            <input class="display-inline" type="radio" name="survival" value="0" checked>
-                            <input class="display-inline" type="radio" name="survival" value="1" >
-                            <input class="display-inline" type="radio" name="survival" value="2" >
-                            <input class="display-inline" type="radio" name="survival" value="3" >
-                            <input class="display-inline" type="radio" name="survival" value="4" >
-                            <input class="display-inline" type="radio" name="survival" value="5" >
+                        <div class="skill">
+                            <div>Выживание</div>
+                            <input type="radio" id=survival-0 name="survival" value="0" checked>
+                            <label class="radio-0" for="survival-0"></label>
+                            <input type="radio" id=survival-1 name="survival" value="1" >
+                            <label class="radio-1" for="survival-1"></label>
+                            <input type="radio" id=survival-2 name="survival" value="2" >
+                            <label class="radio-2" for="survival-2"></label>
+                            <input type="radio" id=survival-3 name="survival" value="3">
+                            <label class="radio-3" for="survival-3"></label>
+                            <input type="radio" id=survival-4 name="survival" value="4" >
+                            <label class="radio-4" for="survival-4"></label>
+                            <input type="radio" id=survival-5 name="survival" value="5" >
+                            <label class="radio-5" for="survival-5"></label>
                             <span id="survival">--</span>
                         </div>
-                        <div>
-                            Выслеживание
-                            <input class="display-inline" type="radio" name="tracking" value="0" checked>
-                            <input class="display-inline" type="radio" name="tracking" value="1" >
-                            <input class="display-inline" type="radio" name="tracking" value="2" >
-                            <input class="display-inline" type="radio" name="tracking" value="3" >
-                            <input class="display-inline" type="radio" name="tracking" value="4" >
-                            <input class="display-inline" type="radio" name="tracking" value="5" >
+                        <div class="skill">
+                           <div>Выслеживание</div>
+                            <input type="radio" id=tracking-0 name="tracking" value="0" checked>
+                            <label class="radio-0" for="tracking-0"></label>
+                            <input type="radio" id=tracking-1 name="tracking" value="1" >
+                            <label class="radio-1" for="tracking-1"></label>
+                            <input type="radio" id=tracking-2 name="tracking" value="2" >
+                            <label class="radio-2" for="tracking-2"></label>
+                            <input type="radio" id=tracking-3 name="tracking" value="3">
+                            <label class="radio-3" for="tracking-3"></label>
+                            <input type="radio" id=tracking-4 name="tracking" value="4" >
+                            <label class="radio-4" for="tracking-4"></label>
+                            <input type="radio" id=tracking-5 name="tracking" value="5" >
+                            <label class="radio-5" for="tracking-5"></label>
                             <span id="tracking">--</span>
-                        </div>
                         <div>
-                            лечение
-                            <input class="display-inline" type="radio" name="healing" value="0" checked>
-                            <input class="display-inline" type="radio" name="healing" value="1" >
-                            <input class="display-inline" type="radio" name="healing" value="2" >
-                            <input class="display-inline" type="radio" name="healing" value="3" >
-                            <input class="display-inline" type="radio" name="healing" value="4" >
-                            <input class="display-inline" type="radio" name="healing" value="5" >
+                            <p>лечение</p>
+                            <input type="radio" id=healing-0 name="healing" value="0" checked>
+                            <label class="radio-0" for="healing-0"></label>
+                            <input type="radio" id=healing-1 name="healing" value="1" >
+                            <label class="radio-1" for="healing-1"></label>
+                            <input type="radio" id=healing-2 name="healing" value="2" >
+                            <label class="radio-2" for="healing-2"></label>
+                            <input type="radio" id=healing-3 name="healing" value="3">
+                            <label class="radio-3" for="healing-3"></label>
+                            <input type="radio" id=healing-4 name="healing" value="4" >
+                            <label class="radio-4" for="healing-4"></label>
+                            <input type="radio" id=healing-5 name="healing" value="5" >
+                            <label class="radio-5" for="healing-5"></label>
                             <span id="healing">--</span>
                         </div>
                         <div>
-                            Провокация
-                            <input class="display-inline" type="radio" name="taunt" value="0" checked>
-                            <input class="display-inline" type="radio" name="taunt" value="1" >
-                            <input class="display-inline" type="radio" name="taunt" value="2" >
-                            <input class="display-inline" type="radio" name="taunt" value="3" >
-                            <input class="display-inline" type="radio" name="taunt" value="4" >
-                            <input class="display-inline" type="radio" name="taunt" value="5" >
+                            <p>Провокация</p>
+                            <input type="radio" id=taunt-0 name="taunt" value="0" checked>
+                            <label class="radio-0" for="taunt-0"></label>
+                            <input type="radio" id=taunt-1 name="taunt" value="1" >
+                            <label class="radio-1" for="taunt-1"></label>
+                            <input type="radio" id=taunt-2 name="taunt" value="2" >
+                            <label class="radio-2" for="taunt-2"></label>
+                            <input type="radio" id=taunt-3 name="taunt" value="3">
+                            <label class="radio-3" for="taunt-3"></label>
+                            <input type="radio" id=taunt-4 name="taunt" value="4" >
+                            <label class="radio-4" for="taunt-4"></label>
+                            <input type="radio" id=taunt-5 name="taunt" value="5" >
+                            <label class="radio-5" for="taunt-5"></label>
                             <span id="taunt">--</span>
                         </div>
                         <div>
-                            Расследование
-                            <input class="display-inline" type="radio" name="investigation" value="0" checked>
-                            <input class="display-inline" type="radio" name="investigation" value="1" >
-                            <input class="display-inline" type="radio" name="investigation" value="2" >
-                            <input class="display-inline" type="radio" name="investigation" value="3" >
-                            <input class="display-inline" type="radio" name="investigation" value="4" >
-                            <input class="display-inline" type="radio" name="investigation" value="5" >
+                            <p>Расследование</p>
+                            <input type="radio" id=investigation-0 name="investigation" value="0" checked>
+                            <label class="radio-0" for="investigation-0"></label>
+                            <input type="radio" id=investigation-1 name="investigation" value="1" >
+                            <label class="radio-1" for="investigation-1"></label>
+                            <input type="radio" id=investigation-2 name="investigation" value="2" >
+                            <label class="radio-2" for="investigation-2"></label>
+                            <input type="radio" id=investigation-3 name="investigation" value="3">
+                            <label class="radio-3" for="investigation-3"></label>
+                            <input type="radio" id=investigation-4 name="investigation" value="4" >
+                            <label class="radio-4" for="investigation-4"></label>
+                            <input type="radio" id=investigation-5 name="investigation" value="5" >
+                            <label class="radio-5" for="investigation-5"></label>
                             <span id="investigation">--</span>
                         </div>
                         <div>
-                            Ремонт
-                            <input class="display-inline" type="radio" name="repair" value="0" checked>
-                            <input class="display-inline" type="radio" name="repair" value="1" >
-                            <input class="display-inline" type="radio" name="repair" value="2" >
-                            <input class="display-inline" type="radio" name="repair" value="3" >
-                            <input class="display-inline" type="radio" name="repair" value="4" >
-                            <input class="display-inline" type="radio" name="repair" value="5" >
+                            <p>Ремонт</p>
+                            <input type="radio" id=repair-0 name="repair" value="0" checked>
+                            <label class="radio-0" for="repair-0"></label>
+                            <input type="radio" id=repair-1 name="repair" value="1" >
+                            <label class="radio-1" for="repair-1"></label>
+                            <input type="radio" id=repair-2 name="repair" value="2" >
+                            <label class="radio-2" for="repair-2"></label>
+                            <input type="radio" id=repair-3 name="repair" value="3">
+                            <label class="radio-3" for="repair-3"></label>
+                            <input type="radio" id=repair-4 name="repair" value="4" >
+                            <label class="radio-4" for="repair-4"></label>
+                            <input type="radio" id=repair-5 name="repair" value="5" >
+                            <label class="radio-5" for="repair-5"></label>
                             <span id="repair">--</span>
                         </div>
                         <div>
-                            Уличное чутье
-                            <input class="display-inline" type="radio" name="streetwise" value="0" checked>
-                            <input class="display-inline" type="radio" name="streetwise" value="1" >
-                            <input class="display-inline" type="radio" name="streetwise" value="2" >
-                            <input class="display-inline" type="radio" name="streetwise" value="3" >
-                            <input class="display-inline" type="radio" name="streetwise" value="4" >
-                            <input class="display-inline" type="radio" name="streetwise" value="5" >
+                            <p>Уличное чутье</p>
+                            <input type="radio" id=streetwise-0 name="streetwise" value="0" checked>
+                            <label class="radio-0" for="streetwise-0"></label>
+                            <input type="radio" id=streetwise-1 name="streetwise" value="1" >
+                            <label class="radio-1" for="streetwise-1"></label>
+                            <input type="radio" id=streetwise-2 name="streetwise" value="2" >
+                            <label class="radio-2" for="streetwise-2"></label>
+                            <input type="radio" id=streetwise-3 name="streetwise" value="3">
+                            <label class="radio-3" for="streetwise-3"></label>
+                            <input type="radio" id=streetwise-4 name="streetwise" value="4" >
+                            <label class="radio-4" for="streetwise-4"></label>
+                            <input type="radio" id=streetwise-5 name="streetwise" value="5" >
+                            <label class="radio-5" for="streetwise-5"></label>
                             <span id="streetwise">--</span>
                         </div>
                     </div>
-                    <div class="w-100"></div>
+                        <div class="w-100"></div>
+                    </div>
                     <div id="spirit-skills" class="col-6">
-                        <h5>Характер</h5>
-                        <div>
-                            Запугивание
-                            <input class="display-inline" type="radio" name="intimidation" value="0" checked>
-                            <input class="display-inline" type="radio" name="intimidation" value="1" >
-                            <input class="display-inline" type="radio" name="intimidation" value="2" >
-                            <input class="display-inline" type="radio" name="intimidation" value="3" >
-                            <input class="display-inline" type="radio" name="intimidation" value="4" >
-                            <input class="display-inline" type="radio" name="intimidation" value="5" >
+                        <h2>Характер</h2>
+                        <div class="skill">
+                            <div>Запугивание</div>
+                            <input type="radio" id=intimidation-0 name="intimidation" value="0" checked>
+                            <label class="radio-0" for="intimidation-0"></label>
+                            <input type="radio" id=intimidation-1 name="intimidation" value="1" >
+                            <label class="radio-1" for="intimidation-1"></label>
+                            <input type="radio" id=intimidation-2 name="intimidation" value="2" >
+                            <label class="radio-2" for="intimidation-2"></label>
+                            <input type="radio" id=intimidation-3 name="intimidation" value="3">
+                            <label class="radio-3" for="intimidation-3"></label>
+                            <input type="radio" id=intimidation-4 name="intimidation" value="4" >
+                            <label class="radio-4" for="intimidation-4"></label>
+                            <input type="radio" id=intimidation-5 name="intimidation" value="5" >
+                            <label class="radio-5" for="intimidation-5"></label>
                             <span id="intimidation">--</span>
                         </div>
-                        <div>
-                            Убеждение
-                            <input class="display-inline" type="radio" name="persuasion" value="0" checked>
-                            <input class="display-inline" type="radio" name="persuasion" value="1" >
-                            <input class="display-inline" type="radio" name="persuasion" value="2" >
-                            <input class="display-inline" type="radio" name="persuasion" value="3" >
-                            <input class="display-inline" type="radio" name="persuasion" value="4" >
-                            <input class="display-inline" type="radio" name="persuasion" value="5" >
+                        <div class="skill">
+                            <div>Убеждение</div>
+                            <input type="radio" id=persuasion-0 name="persuasion" value="0" checked>
+                            <label class="radio-0" for="persuasion-0"></label>
+                            <input type="radio" id=persuasion-1 name="persuasion" value="1" >
+                            <label class="radio-1" for="persuasion-1"></label>
+                            <input type="radio" id=persuasion-2 name="persuasion" value="2" >
+                            <label class="radio-2" for="persuasion-2"></label>
+                            <input type="radio" id=persuasion-3 name="persuasion" value="3">
+                            <label class="radio-3" for="persuasion-3"></label>
+                            <input type="radio" id=persuasion-4 name="persuasion" value="4" >
+                            <label class="radio-4" for="persuasion-4"></label>
+                            <input type="radio" id=persuasion-5 name="persuasion" value="5" >
+                            <label class="radio-5" for="persuasion-5"></label>
                             <span id="persuasion">--</span>
                         </div>
 
                     </div>
                     <div id="strength-skills" class="col-6">
-                        <h5>Сила</h5>
-                        Лазание
-                        <input class="display-inline" type="radio" name="climbing" value="0" checked>
-                        <input class="display-inline" type="radio" name="climbing" value="1" >
-                        <input class="display-inline" type="radio" name="climbing" value="2" >
-                        <input class="display-inline" type="radio" name="climbing" value="3" >
-                        <input class="display-inline" type="radio" name="climbing" value="4" >
-                        <input class="display-inline" type="radio" name="climbing" value="5" >
-                        <span id="climbing">--</span>
+                        <h2>Сила</h2>
+                        <div  class="skill">
+                            <div>Лазание</div>
+                            <input type="radio" id=climbing-0 name="climbing" value="0" checked>
+                            <label class="radio-0" for="climbing-0"></label>
+                            <input type="radio" id=climbing-1 name="climbing" value="1" >
+                            <label class="radio-1" for="climbing-1"></label>
+                            <input type="radio" id=climbing-2 name="climbing" value="2" >
+                            <label class="radio-2" for="climbing-2"></label>
+                            <input type="radio" id=climbing-3 name="climbing" value="3">
+                            <label class="radio-3" for="climbing-3"></label>
+                            <input type="radio" id=climbing-4 name="climbing" value="4" >
+                            <label class="radio-4" for="climbing-4"></label>
+                            <input type="radio" id=climbing-5 name="climbing" value="5" >
+                            <label class="radio-5" for="climbing-5"></label>
+                            <span id="climbing">--</span>
+                        </div>
                     </div>
                     <div class="w-100"></div>
                     <div id="vigor-skills" class="col-6">
-                        <h5>Выносливость</h5>
+                        <h2>Выносливость</h2>
 
                     </div>
 
                 </div>
-            </div>.
-            <div if="edges">
+            </div>
+            <div id="edges">
+                <p>Изъян:</p>
                 <select id ="majorHindrance" name="majorHindrance" form="charForm">
                     <option>--</option>
                     <option>Боязнь</option>
@@ -346,6 +522,7 @@
 
 
 
+        </div>
         </div>
     </form>
     <button id="testBDbutton">Отправить</button>
