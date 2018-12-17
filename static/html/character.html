@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,9 +13,13 @@
 
 </head>
 <body>
-<p><input maxlength="100" size="120" id="charname" placeholder="Введите имя перонажа"></p>
-<p><textarea id="chardescription" placeholder="Введите описание персонажа"></textarea></p>
+<div align="center">
+    <h1>Анкета персонажа<span><button id="back" onclick="document.location='../html/charlist.html'">назад</button></span></h1>
 
+<p><input maxlength="100" size="50" id="charname" placeholder="Введите имя перонажа"></p>
+<p><textarea id="chardescription" cols="140" placeholder="Введите описание персонажа"></textarea></p>
+
+</div>
     <form id="charForm" >
         <div class="container">
            <!--Characteristics -->
@@ -22,7 +27,7 @@
 
                 <div class="col">
                     <div id="characteristics">
-                        <b><p>Выберите ваши характеристики</p></b>
+                        <h3><p>Выберите ваши характеристики</p></h3>
                         <h3>Сила</h3>
                         <div>
                             <input type="radio" id=strength-1 name="strength" value="0" checked>
@@ -94,19 +99,35 @@
                             <span id="vigor">--</span>
                         </div>
                     </div>
-                    <div id="error"></div>
+
                 </div>
                 <div class="col">
-                    <div style="border: 2px solid black; border-radius: 5px; padding: 1rem">
+                    <div  align="center">
+                        <h3>Выберите пол персонажа:</h3>
+                        <input type="radio" id="gender-1" name="gender" value="M" checked>
+                        <label class="gender" for="gender-1">M</label>
+                        <input type="radio" id="gender-2" name="gender" value="F" >
+                        <label class="gender" for="gender-2">Ж</label>
+                    </div>
+                    <div style="border: 2px solid gold; border-radius: 5px; padding: 1rem; margin-bottom: 30px;">
                         <p>Шаг: <span id="pace">6</span></p>
                         <p>Защита: <span id="parry">2</span></p>
                         <p>Стойкость: <span id="toughness">4</span></p>
                         <p>Харизма: <span id="charisma">0</span></p>
                     </div>
+
+                    <h4>Очки характеристик: <span id="charsPoints">123</span></h4>
+                    <h4>Очки навыков: <span id="skillPoints">321</span></h4>
+                    <div class="error" id="charsError"></div>
+                    <div class="error" id="skillsError"></div>
+
+
+
                 </div>
             </div>
             <!--Skills -->
-            <div>
+            <h1 align="center">Навыки</h1>
+            <div id="skills" >
                 <div class="row">
                     <div id="agility-skills" class="col-6">
                         <h2>Ловкость</h2>
@@ -340,8 +361,9 @@
                             <input type="radio" id=tracking-5 name="tracking" value="5" >
                             <label class="radio-5" for="tracking-5"></label>
                             <span id="tracking">--</span>
-                        <div>
-                            <p>лечение</p>
+                        </div>
+                        <div class="skill">
+                            <div>лечение</div>
                             <input type="radio" id=healing-0 name="healing" value="0" checked>
                             <label class="radio-0" for="healing-0"></label>
                             <input type="radio" id=healing-1 name="healing" value="1" >
@@ -356,8 +378,8 @@
                             <label class="radio-5" for="healing-5"></label>
                             <span id="healing">--</span>
                         </div>
-                        <div>
-                            <p>Провокация</p>
+                        <div class="skill">
+                            <div>Провокация</div>
                             <input type="radio" id=taunt-0 name="taunt" value="0" checked>
                             <label class="radio-0" for="taunt-0"></label>
                             <input type="radio" id=taunt-1 name="taunt" value="1" >
@@ -372,8 +394,8 @@
                             <label class="radio-5" for="taunt-5"></label>
                             <span id="taunt">--</span>
                         </div>
-                        <div>
-                            <p>Расследование</p>
+                        <div class="skill">
+                            <div>Расследование</div>
                             <input type="radio" id=investigation-0 name="investigation" value="0" checked>
                             <label class="radio-0" for="investigation-0"></label>
                             <input type="radio" id=investigation-1 name="investigation" value="1" >
@@ -388,8 +410,8 @@
                             <label class="radio-5" for="investigation-5"></label>
                             <span id="investigation">--</span>
                         </div>
-                        <div>
-                            <p>Ремонт</p>
+                        <div class="skill">
+                            <div>Ремонт</div>
                             <input type="radio" id=repair-0 name="repair" value="0" checked>
                             <label class="radio-0" for="repair-0"></label>
                             <input type="radio" id=repair-1 name="repair" value="1" >
@@ -404,8 +426,8 @@
                             <label class="radio-5" for="repair-5"></label>
                             <span id="repair">--</span>
                         </div>
-                        <div>
-                            <p>Уличное чутье</p>
+                        <div class="skill">
+                            <div>Уличное чутье</div>
                             <input type="radio" id=streetwise-0 name="streetwise" value="0" checked>
                             <label class="radio-0" for="streetwise-0"></label>
                             <input type="radio" id=streetwise-1 name="streetwise" value="1" >
@@ -423,6 +445,7 @@
                     </div>
                         <div class="w-100"></div>
                     </div>
+                <div class="row">
                     <div id="spirit-skills" class="col-6">
                         <h2>Характер</h2>
                         <div class="skill">
@@ -441,7 +464,7 @@
                             <label class="radio-5" for="intimidation-5"></label>
                             <span id="intimidation">--</span>
                         </div>
-                        <div class="skill">
+                        <div  class="skill">
                             <div>Убеждение</div>
                             <input type="radio" id=persuasion-0 name="persuasion" value="0" checked>
                             <label class="radio-0" for="persuasion-0"></label>
@@ -459,9 +482,10 @@
                         </div>
 
                     </div>
+
                     <div id="strength-skills" class="col-6">
                         <h2>Сила</h2>
-                        <div  class="skill">
+                        <div class="skill">
                             <div>Лазание</div>
                             <input type="radio" id=climbing-0 name="climbing" value="0" checked>
                             <label class="radio-0" for="climbing-0"></label>
@@ -479,54 +503,61 @@
                         </div>
                     </div>
                     <div class="w-100"></div>
+                </div>
+                <div class="row">
                     <div id="vigor-skills" class="col-6">
                         <h2>Выносливость</h2>
 
                     </div>
-
                 </div>
-            </div>
-            <div id="edges">
-                <p>Изъян:</p>
-                <select id ="majorHindrance" name="majorHindrance" form="charForm">
-                    <option>--</option>
-                    <option>Боязнь</option>
-                    <option>В розыске</option>
-                    <option>Враг</option>
-                    <option>Глухота</option>
-                    <option>Дурная привычка</option>
-                    <option>Жадность</option>
-                    <option>Заблуждения</option>
-                    <option>Заносчивость</option>
-                    <option>Клятва</option>
-                    <option>Коротышка</option>
-                    <option>Любопытство</option>
-                    <option>Мстительность</option>
-                    <option>Невежда</option>
-                    <option>Неудачник</option>
-                    <option>Одноглазый</option>
-                    <option>Одноногий</option>
-                    <option>Однорукий</option>
-                    <option>Пацифизм</option>
-                    <option>Плохое зрение</option>
-                    <option>Самоуверенность</option>
-                    <option>Слепота</option>
-                    <option>Старость</option>
-                    <option>Трусость</option>
-                    <option>Хромота</option>
-                    <option>Юность</option>
-                </select>
-
 
             </div>
 
+        </div>
 
 
-        </div>
-        </div>
+
     </form>
-    <button id="testBDbutton">Отправить</button>
-    <div id="time"></div>
+
+    <div id="edges" align="center">
+        <h1 >Черты и изъяны</h1>
+    <span>Изъян:</span>
+    <select id ="majorHindrance" name="hindrances">
+        <option>--</option>
+        <option>Боязнь</option>
+        <option>В розыске</option>
+        <option>Враг</option>
+        <option>Глухота</option>
+        <option>Дурная привычка</option>
+        <option>Жадность</option>
+        <option>Заблуждения</option>
+        <option>Заносчивость</option>
+        <option>Клятва</option>
+        <option>Коротышка</option>
+        <option>Любопытство</option>
+        <option>Мстительность</option>
+        <option>Невежда</option>
+        <option>Неудачник</option>
+        <option>Одноглазый</option>
+        <option>Одноногий</option>
+        <option>Однорукий</option>
+        <option>Пацифизм</option>
+        <option>Плохое зрение</option>
+        <option>Самоуверенность</option>
+        <option>Слепота</option>
+        <option>Старость</option>
+        <option>Трусость</option>
+        <option>Хромота</option>
+        <option>Юность</option>
+    </select>
+
+
+</div>
+    <div align="center">
+        <button id="sendCharForm">Отправить</button>
+    </div>
+
+
 </body>
 </html>
 

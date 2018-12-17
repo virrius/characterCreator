@@ -15,7 +15,7 @@ $(document).ready(function($) {
 
     $('#characteristics input[type=radio]').on('change', characteristicsChanged);
     $('#skills input[type=radio]').on('change',skillsChanged);
-    $('#testBDbutton').on('click', FindBD);
+    $('#sendCharForm').on('click', FindBD);
 
 
     loadChar();
@@ -37,11 +37,14 @@ $(document).ready(function($) {
             }
 
         }
-        console.log("sum of characteristics = "+sum);
-        if(sum > maxCharsPoints)
-            document.getElementById("error").textContent="У вас недостаточно очков характеристик!";
+        console.log(sum);
+        $('#charsPoints').text(sum+"/"+maxCharsPoints);
+
+        if(sum > maxCharsPoints) {
+            document.getElementById("charsError").textContent = "У вас недостаточно очков характеристик!";
+        }
         else
-            document.getElementById("error").textContent="";
+            document.getElementById("charsError").textContent="";
         skillsChanged();
 
     }
@@ -54,18 +57,20 @@ $(document).ready(function($) {
             {
                 let diff=parseInt(it.value)-1-characteristicValues[characteristics.indexOf(item)];
                 sum+=parseInt(it.value)+(diff>0?diff:0);
-                document.getElementById(it.name).innerText=setDice(parseInt(it.value))
+                document.getElementById(it.name).innerText=setDice(parseInt(it.value));
                 if(it.name==="fighting") {
                     document.getElementById("parry").innerText =2+ (parseInt(it.value)>0?parseInt(it.value)+1:0);
                 }
             });
         });
         console.log("sum of skills "+sum);
+        $('#skillPoints').text(sum+"/"+maxSkillsPoints);
+
 
         if(sum > maxSkillsPoints)
-            document.getElementById("error").textContent="У вас недостаточно очков скиллов!";
+            document.getElementById("skillsError").textContent="У вас недостаточно очков скиллов!";
         else
-            document.getElementById("error").textContent="";
+            document.getElementById("skillsError").textContent="";
     }
 
     function setDice(point,chars=false) {
@@ -83,8 +88,10 @@ var oldCharName;
 function FindBD() {
     let charname=$('#charname').val();
     let chardesc=$("#chardescription").val();
+    let hindrance= $('#majorHindrance').val()
     if(charname==="")
     {
+        console.log("name empty");
         return;
     }
     var data = `charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`.split("&");
@@ -99,11 +106,11 @@ function FindBD() {
     console.log(obj);
     console.log(`oldCharName=${oldCharName} &charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`);
 
-        $.ajax({
+    $.ajax({
         /*'http://127.0.0.1:3000/we',*/
         url: "https://hi0owh1vqa.execute-api.us-east-2.amazonaws.com/Prod/saveFormFunction",
         type: "POST",
-        data: `oldCharName=${oldCharName}&charname=${charname}&chardescription=${chardesc}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
+        data: `oldCharName=${oldCharName}&charname=${charname}&chardescription=${chardesc}&hindrances=${hindrance}&${$('#charForm').serialize()}&userName=${getCookie('userName')}`,
         dataType: 'text',
         success:function (result){
 
@@ -133,7 +140,8 @@ function loadChar()
 
     sessionStorage.clear();
     $('#charname').val(char['charname']);
-    $('#chardescription').val(char['chardescription'])
+    $('#chardescription').val(char['chardescription']);
+    $('#majorHindrance').val(char['hindrances'])
 
 
 

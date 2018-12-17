@@ -33,7 +33,7 @@ $(document).ready(function($) {
         let regName = $("#regName").val();
         let regEmail = $("#regEmail").val();
         let regPassword = $("#regPassword").val();
-        console.log(regName,regEmail,regPassword);
+
         if (!nameRegex.test(regName)) {
             error.textContent = "Неверное имя. Имя должно начинаться с буквы и состоять из: [a-z][A-Z][0-9] 3-50 символов";
             return false;
@@ -42,11 +42,12 @@ $(document).ready(function($) {
             error.textContent = "Неверный пароль. Пароль должен содержать комбинацию из: [a-z][A-Z][0-9] 7+ символов";
             return false;
         }
+        regPassword=generateHash(regPassword);
         if (!emailRegex.test(regEmail)) {
             error.textContent = "Неверный адрес почты";
             return false;
         }
-
+        console.log(regName,regEmail,regPassword);
 
         $.ajax({
             type: "POST",
@@ -102,6 +103,8 @@ $(document).ready(function($) {
                 error.textContent = "Неверный пароль. Пароль должен содержать комбинацию из: [a-z][A-Z][0-9] 7+ символов";
                 return false
             }
+            authPassword=generateHash(authPassword);
+
         }
         console.log(authName,authPassword);
 
@@ -137,3 +140,25 @@ $(document).ready(function($) {
         return false
     }
 });
+
+
+
+String.prototype.hashCode = function() {
+    var hash = 0, i = 0, len = this.length;
+    while ( i < len ) {
+        hash  = ((hash << 5) - hash + this.charCodeAt(i++)) << 0;
+    }
+    return hash;
+};
+
+
+
+
+const SALT = '$ome$alt';
+
+function generateHash(pass) {
+    console.log(CryptoJS.SHA256(pass+SALT).toString());
+
+    return CryptoJS.SHA256(pass+SALT).toString()
+
+}
